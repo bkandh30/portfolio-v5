@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
@@ -9,17 +9,13 @@
 
   --brand-subtle: #f5f5ff;
   --brand-soft: #e8e9ff;
-  --brand-muted: #b9b9f9;
-  --brand-light: #7f7dfc;
   --brand: #533afd;
   --brand-hover: #4032c8;
   --brand-deep: #2e2b8c;
   --text-primary: #061b31;
-  --text-secondary: #50617a;
   --text-muted: #64748d;
   --page: #ffffff;
   --page-subtle: #f8fafd;
-  --surface: rgba(255, 255, 255, 0.78);
   --surface-strong: rgba(255, 255, 255, 0.94);
   --border-subtle: #e5edf5;
   --border-strong: #d4dee9;
@@ -184,102 +180,6 @@ pre code {
   border-radius: 12px;
   background: #1a2c44;
   color: #f2f7fe;
-}
-
-.page-wrap {
-  width: min(1080px, calc(100% - 2rem));
-  margin-inline: auto;
-}
-
-.display-title {
-  font-family: 'Fraunces', Georgia, serif;
-}
-
-.island-shell {
-  border: 1px solid var(--border-subtle);
-  background: linear-gradient(165deg, var(--surface-strong), var(--surface));
-  box-shadow:
-    0 1px 0 #ffffff inset,
-    0 22px 44px rgba(0, 55, 112, 0.08),
-    0 6px 18px rgba(0, 59, 137, 0.05);
-  backdrop-filter: blur(4px);
-}
-
-.feature-card {
-  background: linear-gradient(165deg, color-mix(in oklab, var(--surface-strong) 93%, white 7%), var(--surface));
-  box-shadow:
-    0 1px 0 #ffffff inset,
-    0 18px 34px rgba(0, 55, 112, 0.08),
-    0 4px 14px rgba(0, 59, 137, 0.04);
-}
-
-.feature-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--brand) 35%, var(--border-subtle));
-}
-
-button,
-.island-shell,
-a {
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
-    transform 180ms ease;
-}
-
-.island-kicker {
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 0.69rem;
-  color: var(--brand-hover);
-}
-
-.nav-link {
-  position: relative;
-  text-decoration: none;
-  color: var(--text-secondary);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 100%;
-  height: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: linear-gradient(90deg, var(--brand-light), var(--brand));
-  transition: transform 170ms ease;
-}
-
-.nav-link:hover,
-.nav-link.is-active {
-  color: var(--text-primary);
-}
-
-.nav-link:hover::after,
-.nav-link.is-active::after {
-  transform: scaleX(1);
-}
-
-.rise-in {
-  animation: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.site-footer {
-  border-top: 1px solid var(--border-subtle);
-  background: color-mix(in oklab, var(--surface-strong) 84%, transparent 16%);
 }
 
 ::selection {
