@@ -17,7 +17,7 @@ export const portfolio = {
 			src: "/images/bhavya-kandhari.jpg",
 			alt: "Portrait of Bhavya Kandhari",
 			width: 864,
-			height: 1184,
+			height: 1080,
 		},
 		socials: [
 			{

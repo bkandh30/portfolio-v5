@@ -113,8 +113,8 @@ export function ChromaticTextReveal({
 								{word}
 							</span>
 						))}
-						{/* Moving a clipped text gradient defines this effect. Paint
-              containment bounds that deliberate repaint to the active word. */}
+						{/* Matching negative offsets and padding preserve alignment while
+								giving blurred glyph edges room to render during the reveal. */}
 						<m.span
 							key={`${activeWord}-${activeIndex}`}
 							aria-hidden

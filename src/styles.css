@@ -96,7 +96,8 @@
 	--sidebar-border: var(--border-subtle);
 	--sidebar-ring: var(--brand-500);
 
-	--layout-max: 75rem;
+	--layout-wide-max: 75rem;
+	--layout-content-max: 68rem;
 	--layout-gutter: clamp(1.25rem, 4vw, 4rem);
 	--section-space: clamp(5rem, 10vw, 8.5rem);
 	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -283,9 +284,18 @@ body,
 }
 
 @layer components {
-	.site-container {
-		width: min(calc(100% - (2 * var(--layout-gutter))), var(--layout-max));
+	.site-container,
+	.content-container {
+		width: min(calc(100% - (2 * var(--layout-gutter))), var(--container-max));
 		margin-inline: auto;
+	}
+
+	.site-container {
+		--container-max: var(--layout-wide-max);
+	}
+
+	.content-container {
+		--container-max: var(--layout-content-max);
 	}
 
 	.hero-section {
@@ -338,12 +348,12 @@ body,
 		clip-path: polygon(26% 0%, 100% 0%, 100% 100%, 58% 100%);
 		content: "";
 		filter: blur(8px);
-		opacity: 0.78;
+		opacity: 0.68;
 		pointer-events: none;
 		transform: rotate(-7deg);
 	}
 
-	.hero-section > .site-container {
+	.hero-section > .content-container {
 		z-index: 1;
 	}
 
@@ -366,9 +376,9 @@ body,
 
 	.chromatic-text-word {
 		position: absolute;
-		inset-block-start: 0;
-		inset-inline-start: 0;
-		contain: paint;
+		inset-block-start: -0.08em;
+		inset-inline-start: -0.05em;
+		padding: 0.08em 0.05em;
 		background-image: linear-gradient(
 			90deg,
 			var(--text-primary) 0%,
@@ -396,16 +406,16 @@ body,
 
 	.hero-portrait-orbit {
 		position: absolute;
-		top: -8%;
-		left: -17%;
+		top: -4%;
+		left: -7%;
 		z-index: -1;
-		width: 46%;
+		width: 52%;
 		aspect-ratio: 1;
 		border: 1px solid var(--brand-200);
 		border-radius: 999px;
 		box-shadow:
-			0 0 0 1.25rem rgba(154, 154, 254, 0.08),
-			0 0 0 2.5rem rgba(154, 154, 254, 0.045);
+			0 0 0 1rem rgba(154, 154, 254, 0.07),
+			0 0 0 2rem rgba(154, 154, 254, 0.035);
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -426,7 +436,7 @@ body,
 			height: 29rem;
 			clip-path: polygon(32% 0%, 100% 0%, 100% 100%, 64% 100%);
 			filter: blur(6px);
-			opacity: 0.52;
+			opacity: 0.46;
 			transform: rotate(-7deg);
 		}
 	}

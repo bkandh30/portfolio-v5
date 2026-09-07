@@ -15,10 +15,14 @@ export function HeroSection() {
 		<section aria-labelledby="hero-title" className="hero-section">
 			<div aria-hidden="true" className="hero-grid" />
 
-			<div className="site-container relative grid items-center gap-14 py-16 sm:py-20 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-8 lg:pt-8 lg:pb-24">
+			<div className="content-container relative grid items-center gap-14 py-16 sm:py-20 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[minmax(0,19.5rem)_minmax(0,34rem)] lg:justify-center lg:gap-14 lg:py-16">
 				<div className="hero-copy lg:order-2">
 					<div className="mb-6">
-						<span className="inline-flex items-center rounded-md border border-success/20 bg-white/75 px-3.5 py-1.5 font-mono text-[0.6875rem] leading-4 font-medium text-neutral-700 uppercase tracking-[0.08em] shadow-[inset_0_0_12px_color-mix(in_srgb,var(--status-success)_4%,transparent),0_0_18px_color-mix(in_srgb,var(--status-success)_9%,transparent)] backdrop-blur-sm">
+						<span className="inline-flex items-center gap-2 rounded-full border border-success/15 bg-white/45 px-2.5 py-1 font-mono text-[0.6875rem] leading-4 font-medium text-neutral-600 uppercase tracking-[0.06em]">
+							<span
+								aria-hidden="true"
+								className="size-1.5 rounded-full bg-success shadow-[0_0_0_3px_color-mix(in_srgb,var(--status-success)_8%,transparent)]"
+							/>
 							{hero.availability}
 						</span>
 					</div>
@@ -64,47 +68,41 @@ export function HeroSection() {
 						</a>
 					</div>
 
-					<div className="mt-5 flex items-center gap-4">
-						<span className="font-mono text-[0.6875rem] font-medium text-neutral-500 uppercase tracking-[0.12em]">
-							Connect
-						</span>
-						<span aria-hidden="true" className="h-px w-8 bg-neutral-200" />
-						<div className="flex items-center gap-2">
-							{hero.socials.map((social) => {
-								const Icon = socialIcons[social.icon];
-								const isExternal = !social.href.startsWith("mailto:");
+					<div className="mt-2.5 flex items-center gap-1">
+						{hero.socials.map((social) => {
+							const Icon = socialIcons[social.icon];
+							const isExternal = !social.href.startsWith("mailto:");
 
-								return (
-									<a
-										key={social.label}
-										href={social.href}
-										target={isExternal ? "_blank" : undefined}
-										rel={isExternal ? "noopener noreferrer" : undefined}
-										aria-label={social.label}
-										className="grid size-11 place-items-center rounded-md text-neutral-500 no-underline transition-[background-color,color,transform] hover:-translate-y-0.5 hover:bg-brand-25 hover:text-brand-700"
-									>
-										<Icon
-											aria-hidden="true"
-											className="size-[1.125rem]"
-											strokeWidth={1.8}
-										/>
-									</a>
-								);
-							})}
-						</div>
+							return (
+								<a
+									key={social.label}
+									href={social.href}
+									target={isExternal ? "_blank" : undefined}
+									rel={isExternal ? "noopener noreferrer" : undefined}
+									aria-label={social.label}
+									className="grid size-10 place-items-center rounded-md text-neutral-700 no-underline transition-[background-color,color,transform] hover:-translate-y-px hover:bg-brand-25 hover:text-brand-700 focus-visible:-translate-y-px focus-visible:bg-brand-25 focus-visible:text-brand-700"
+								>
+									<Icon
+										aria-hidden="true"
+										className="size-5"
+										strokeWidth={1.8}
+									/>
+								</a>
+							);
+						})}
 					</div>
 				</div>
 
-				<div className="hero-portrait relative mx-auto w-full max-w-[18rem] lg:order-1 lg:ml-0 lg:max-w-[21rem]">
+				<div className="hero-portrait relative mx-auto w-full max-w-[18rem] lg:order-1 lg:ml-0 lg:max-w-[19.5rem]">
 					<div aria-hidden="true" className="hero-portrait-orbit" />
-					<div className="relative aspect-4/5 overflow-hidden rounded-[1.75rem] border border-white/90 bg-white p-2 shadow-[0_28px_80px_rgba(28,30,84,0.16)]">
+					<div className="relative aspect-4/5 overflow-hidden rounded-[1.5rem] border border-white/70 bg-white/55 p-1 shadow-[0_24px_64px_rgba(28,30,84,0.12)]">
 						<img
 							src={hero.portrait.src}
 							alt={hero.portrait.alt}
 							width={hero.portrait.width}
 							height={hero.portrait.height}
 							fetchPriority="high"
-							className="h-full w-full rounded-[1.35rem] object-cover object-[center_38%]"
+							className="h-full w-full rounded-[1.25rem] object-cover object-[center_38%]"
 						/>
 					</div>
 				</div>
