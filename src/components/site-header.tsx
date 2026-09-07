@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 
 const navigationItems = [
 	{ label: "About", href: "/#about" },
-	{ label: "Experience", href: "/#experience" },
 	{ label: "Projects", href: "/#projects" },
 	{ label: "GitHub", href: "/#github" },
 	{ label: "Blog", href: "/#blog" },
@@ -28,7 +27,7 @@ export function SiteHeader() {
 			</a>
 
 			<header className="sticky top-0 z-50 border-neutral-50 border-b bg-white/90 backdrop-blur-xl">
-				<div className="site-container flex h-18 items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+				<div className="site-container flex h-[var(--header-height)] items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
 					<a
 						href="/"
 						aria-label="Bhavya Kandhari home"

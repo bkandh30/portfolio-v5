@@ -99,7 +99,8 @@
 	--layout-wide-max: 75rem;
 	--layout-content-max: 68rem;
 	--layout-gutter: clamp(1.25rem, 4vw, 4rem);
-	--section-space: clamp(5rem, 10vw, 8.5rem);
+	--header-height: 4.5rem;
+	--section-space: clamp(4rem, 7vw, 6.5rem);
 	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 	--chromatic-trail-half-width: 14%;
 	--chromatic-trail-inner-width: 7%;
@@ -296,6 +297,103 @@ body,
 
 	.content-container {
 		--container-max: var(--layout-content-max);
+	}
+
+	.about-section {
+		position: relative;
+		isolation: isolate;
+		background:
+			radial-gradient(
+				ellipse 72% 52% at 88% 25%,
+				rgba(163, 167, 255, 0.11),
+				transparent 68%
+			),
+			var(--page);
+	}
+
+	.about-section::before,
+	.about-section::after {
+		position: absolute;
+		z-index: 0;
+		content: "";
+		pointer-events: none;
+	}
+
+	.about-section::before {
+		inset: 0;
+		background-image:
+			linear-gradient(to right, rgba(83, 58, 253, 0.024) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(83, 58, 253, 0.02) 1px, transparent 1px);
+		background-size: 5.5rem 5.5rem;
+		mask-image: linear-gradient(
+			to bottom,
+			transparent 2%,
+			black 18%,
+			black 72%,
+			transparent 96%
+		);
+	}
+
+	.about-section::after {
+		right: -25rem;
+		bottom: 9%;
+		width: 46rem;
+		height: 18rem;
+		background: linear-gradient(
+			135deg,
+			rgba(185, 185, 249, 0.09),
+			rgba(232, 233, 255, 0.025)
+		);
+		clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%);
+		opacity: 0.65;
+		transform: rotate(-7deg);
+	}
+
+	.about-section > .content-container {
+		position: relative;
+		z-index: 1;
+	}
+
+	.experience-timeline {
+		margin-left: 0.3125rem;
+		border-left: 1px solid var(--border-subtle);
+		padding-left: 1.75rem;
+	}
+
+	.experience-item {
+		position: relative;
+		padding-bottom: 1.75rem;
+	}
+
+	.experience-item::before {
+		position: absolute;
+		top: 0.5rem;
+		left: -2rem;
+		width: 0.5rem;
+		aspect-ratio: 1;
+		border: 1px solid var(--brand-300);
+		background: var(--neutral-0);
+		box-shadow: inset 0 0 0 0.125rem var(--brand-25);
+		content: "";
+	}
+
+	.experience-item:not(:last-child) {
+		margin-bottom: 1.75rem;
+		border-bottom: 1px solid var(--border-subtle);
+	}
+
+	.experience-item:last-child {
+		padding-bottom: 0;
+	}
+
+	@media (min-width: 40rem) {
+		.experience-item {
+			padding-bottom: 2rem;
+		}
+
+		.experience-item:not(:last-child) {
+			margin-bottom: 2rem;
+		}
 	}
 
 	.hero-section {
