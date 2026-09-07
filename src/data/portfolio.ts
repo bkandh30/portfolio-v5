@@ -89,4 +89,47 @@ export const portfolio = {
 			},
 		],
 	},
+	capabilities: {
+		intro: {
+			marker: "02 / Capabilities",
+			title: "From unclear requirements to working software",
+			description:
+				"I combine backend depth, product judgment, and end-to-end ownership to turn real business needs into focused, maintainable solutions.",
+		},
+		items: [
+			{
+				phase: "Build",
+				title: "Backend systems",
+				description:
+					"I build reliable services around real business workflows, with careful attention to clear interfaces, data flow, and maintainable system boundaries.",
+				details: [
+					"APIs and services",
+					"Business workflows",
+					"Integrations and data processing",
+				],
+			},
+			{
+				phase: "Shape",
+				title: "Product-minded engineering",
+				description:
+					"I turn ambiguity into clear technical direction by asking the questions behind a requirement, surfacing trade-offs, and finding the smallest useful solution.",
+				details: [
+					"Clarify the real problem",
+					"Challenge assumptions thoughtfully",
+					"Balance quality with delivery",
+				],
+			},
+			{
+				phase: "Deliver",
+				title: "End-to-end feature delivery",
+				description:
+					"I carry features from requirements through backend implementation, frontend integration, testing, and release while staying accountable to the finished experience.",
+				details: [
+					"Requirements to implementation",
+					"Backend and frontend integration",
+					"Testing, release, and iteration",
+				],
+			},
+		],
+	},
 } as const;

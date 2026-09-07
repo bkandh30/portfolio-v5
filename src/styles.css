@@ -386,6 +386,71 @@ body,
 		padding-bottom: 0;
 	}
 
+	.capabilities-section {
+		background:
+			radial-gradient(
+				ellipse 44% 48% at 7% 58%,
+				rgba(214, 217, 252, 0.28),
+				transparent 74%
+			),
+			var(--page-subtle);
+	}
+
+	.capabilities-section header h2 {
+		margin-top: 0.75rem;
+	}
+
+	.capabilities-section header h2 + p {
+		margin-top: 0.875rem;
+	}
+
+	.capabilities-grid {
+		display: grid;
+	}
+
+	.capability-block {
+		border-top: 1px solid var(--border-subtle);
+		padding-block: 1.125rem;
+	}
+
+	.capability-title {
+		font-size: clamp(1.5rem, 3vw, 1.75rem);
+		line-height: 1.18;
+	}
+
+	.capability-block:first-child .capability-title {
+		font-size: clamp(1.625rem, 3vw, 1.875rem);
+	}
+
+	.capability-description {
+		max-width: 38rem;
+	}
+
+	.capability-details {
+		display: grid;
+		gap: 0.25rem;
+		margin-top: 0.875rem;
+	}
+
+	.capability-details li {
+		position: relative;
+		padding-left: 1.125rem;
+		font-size: 0.8125rem;
+		line-height: 1.25rem;
+		font-weight: 600;
+		color: var(--neutral-700);
+	}
+
+	.capability-details li::before {
+		position: absolute;
+		top: 0.5rem;
+		left: 0.125rem;
+		width: 0.25rem;
+		aspect-ratio: 1;
+		background: var(--brand-400);
+		content: "";
+	}
+
 	@media (min-width: 40rem) {
 		.experience-item {
 			padding-bottom: 2rem;
@@ -393,6 +458,21 @@ body,
 
 		.experience-item:not(:last-child) {
 			margin-bottom: 2rem;
+		}
+
+		.capability-block {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.55fr);
+			align-items: start;
+			column-gap: clamp(1.5rem, 3vw, 2.5rem);
+		}
+
+		.capability-details {
+			margin-top: 0.125rem;
+		}
+
+		.capability-details li {
+			padding-block: 0.125rem;
 		}
 	}
 

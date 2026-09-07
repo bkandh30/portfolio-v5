@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AboutSection } from "../components/about-section";
+import { CapabilitiesSection } from "../components/capabilities-section";
 import { HeroSection } from "../components/hero-section";
 
 export const Route = createFileRoute("/")({ component: App });
@@ -9,6 +10,7 @@ function App() {
 		<main id="main-content">
 			<HeroSection />
 			<AboutSection />
+			<CapabilitiesSection />
 		</main>
 	);
 }
