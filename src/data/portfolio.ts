@@ -132,4 +132,104 @@ export const portfolio = {
 			},
 		],
 	},
+	projects: {
+		intro: {
+			marker: "03 / Projects",
+			title: "Selected work, built with intent",
+			description:
+				"A closer look at three projects that show how I approach systems, product decisions, and delivery.",
+		},
+		featured: {
+			label: "Featured project / End-to-end product",
+			name: "Scouttrace",
+			purpose:
+				"A full-stack workspace for discovering, saving, and summarizing web content.",
+			summary:
+				"I built the authenticated path from discovery and import through persisted processing states and streaming AI summaries.",
+			highlights: [
+				"Connected content discovery and imports to a persisted model with pending, processing, completed, and failed states.",
+				"Built an authenticated streaming summary endpoint so generated output reaches the interface progressively.",
+				"Modeled user-owned items, summaries, tags, authors, and source metadata in PostgreSQL through Prisma.",
+			],
+			stack: [
+				"TanStack Start",
+				"TypeScript",
+				"PostgreSQL",
+				"Prisma",
+				"Better Auth",
+				"Firecrawl",
+				"OpenRouter",
+			],
+			links: [
+				{
+					label: "View source",
+					href: "https://github.com/bkandh30/scouttrace",
+					kind: "source",
+				},
+				{
+					label: "Live product",
+					href: "https://scouttrace.vercel.app/",
+					kind: "live",
+				},
+			],
+			image: {
+				src: "/images/projects/scouttrace.webp",
+				alt: "Scouttrace landing page with a preview of its saved-content dashboard",
+				width: 1800,
+				height: 1040,
+			},
+		},
+		supporting: [
+			{
+				label: "Shipped product / Media workflows",
+				name: "EchoForge",
+				purpose:
+					"An AI-powered text-to-speech workspace for turning scripts into audio with built-in or custom voices.",
+				highlights: [
+					"Modeled organization-owned voices and generations, including built-in and custom voice workflows.",
+					"Connected typed APIs and Prisma persistence to generated media stored in Cloudflare R2.",
+				],
+				stack: [
+					"Next.js",
+					"TypeScript",
+					"tRPC",
+					"PostgreSQL",
+					"Clerk",
+					"Cloudflare R2",
+				],
+				links: [
+					{
+						label: "View source",
+						href: "https://github.com/bkandh30/echoforge",
+						kind: "source",
+					},
+					{
+						label: "Live product",
+						href: "https://echoforgelabs.vercel.app/",
+						kind: "live",
+					},
+				],
+				visual: "audio",
+			},
+			{
+				label: "Backend system / API engineering",
+				name: "GoFlix",
+				purpose:
+					"A production-oriented JSON API for managing movies, users, and authenticated workflows.",
+				highlights: [
+					"Implemented movie CRUD, PostgreSQL migrations, user registration, activation, and JWT authentication.",
+					"Added background email delivery, runtime metrics, and graceful shutdown behavior.",
+				],
+				stack: ["Go", "PostgreSQL", "httprouter", "JWT", "bcrypt"],
+				links: [
+					{
+						label: "View source",
+						href: "https://github.com/bkandh30/GoFlix",
+						kind: "source",
+					},
+				],
+				visual: "api",
+			},
+		],
+	},
 } as const;
