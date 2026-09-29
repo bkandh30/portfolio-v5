@@ -1,10 +1,11 @@
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { portfolio } from "../data/portfolio";
+import { GithubIcon, LinkedinIcon } from "./brand-icons";
 import { ChromaticTextReveal } from "./text-reveal";
 
 const socialIcons = {
-	github: Github,
-	linkedin: Linkedin,
+	github: GithubIcon,
+	linkedin: LinkedinIcon,
 	email: Mail,
 } as const;
 

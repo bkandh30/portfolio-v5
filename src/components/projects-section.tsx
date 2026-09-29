@@ -1,5 +1,6 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "../data/portfolio";
+import { GithubIcon } from "./brand-icons";
 import { SectionIntro } from "./section-intro";
 
 type ProjectLink = {
@@ -22,7 +23,7 @@ function ProjectLinks({ links }: { links: readonly ProjectLink[] }) {
 					className="project-link"
 				>
 					{link.kind === "source" ? (
-						<Github aria-hidden="true" className="size-4" strokeWidth={1.8} />
+						<GithubIcon aria-hidden="true" className="size-4" />
 					) : null}
 					{link.label}
 					<ArrowUpRight
