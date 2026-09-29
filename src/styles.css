@@ -240,14 +240,14 @@ body,
 	}
 
 	:where(
-			a,
-			button,
-			input,
-			textarea,
-			select,
-			summary,
-			[tabindex]
-		):focus-visible {
+		a,
+		button,
+		input,
+		textarea,
+		select,
+		summary,
+		[tabindex]
+	):focus-visible {
 		outline: 2px solid var(--ring);
 		outline-offset: 3px;
 	}
