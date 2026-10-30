@@ -260,4 +260,35 @@ export const portfolio = {
 				"GitHub's contribution data couldn't be loaded. My public repositories are always available on my profile.",
 		},
 	},
+	contact: {
+		intro: {
+			marker: "07 / Contact",
+			title: "Let's work together",
+			description:
+				"Whether it's a role, a project, or a question about something I've built, I'd like to hear about it.",
+		},
+		email: {
+			address: "apply.bhavya.kandhari@gmail.com",
+			send: "Send email",
+			copy: { idle: "Copy email", copied: "Copied", failed: "Copy failed" },
+			announcements: {
+				copied: "Email address copied to clipboard.",
+				failed: "Couldn't copy automatically. Select the address to copy it.",
+			},
+		},
+		links: [
+			{
+				label: "LinkedIn",
+				href: "https://linkedin.com/in/kandharibhavya",
+				kind: "linkedin",
+			},
+			{ label: "GitHub", href: "https://github.com/bkandh30", kind: "github" },
+			{
+				label: "Resume",
+				href: "/resume.pdf",
+				download: "Bhavya-Kandhari-Resume.pdf",
+				kind: "resume",
+			},
+		],
+	},
 } as const;

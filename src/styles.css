@@ -902,6 +902,65 @@ body,
 		margin-top: 0.75rem;
 	}
 
+	.contact-section {
+		background:
+			radial-gradient(
+				ellipse 46% 58% at 50% 100%,
+				rgba(214, 217, 252, 0.42),
+				transparent 72%
+			),
+			var(--page);
+	}
+
+	.contact-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: 40rem;
+		margin-inline: auto;
+		text-align: center;
+		border: 1px solid var(--border-subtle);
+		border-radius: 0.875rem;
+		background: linear-gradient(
+			135deg,
+			rgba(245, 245, 255, 0.96),
+			rgba(248, 250, 253, 0.88)
+		);
+		padding: clamp(1.75rem, 4vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+	}
+
+	.contact-email {
+		font-size: clamp(1.125rem, 2.6vw, 1.5rem);
+		line-height: 1.3;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--neutral-950);
+		overflow-wrap: anywhere;
+	}
+
+	.contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem;
+		width: 100%;
+		margin-top: 1.5rem;
+	}
+
+	.contact-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.25rem 1.75rem;
+		margin-top: 1.25rem;
+	}
+
+	@media (min-width: 40rem) {
+		.contact-actions {
+			width: auto;
+		}
+	}
+
 	.hero-section {
 		position: relative;
 		isolation: isolate;
