@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AboutSection } from "../components/about-section";
 import { CapabilitiesSection } from "../components/capabilities-section";
+import { ContactSection } from "../components/contact-section";
 import { GitHubSection } from "../components/github-section";
 import { HeroSection } from "../components/hero-section";
 import { ProjectsSection } from "../components/projects-section";
@@ -21,6 +22,7 @@ function App() {
 			<CapabilitiesSection />
 			<ProjectsSection />
 			<GitHubSection activity={githubActivity} />
+			<ContactSection />
 		</main>
 	);
 }
