@@ -291,4 +291,14 @@ export const portfolio = {
 			},
 		],
 	},
+	footer: {
+		builtWith: [
+			{ label: "TanStack Start", href: "https://tanstack.com/start" },
+			{ label: "TypeScript", href: "https://www.typescriptlang.org" },
+			{ label: "Tailwind CSS", href: "https://tailwindcss.com" },
+			{ label: "Motion", href: "https://motion.dev" },
+		],
+		owner: "Bhavya Kandhari",
+		rights: "All rights reserved.",
+	},
 } as const;

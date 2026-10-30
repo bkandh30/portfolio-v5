@@ -6,6 +6,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import appCss from "../styles.css?url";
@@ -60,6 +61,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			<body>
 				<SiteHeader />
 				{children}
+				<SiteFooter />
 				{import.meta.env.DEV ? (
 					<TanStackDevtools
 						config={{
