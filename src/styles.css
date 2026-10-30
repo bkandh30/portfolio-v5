@@ -817,6 +817,91 @@ body,
 		}
 	}
 
+	.github-section {
+		background:
+			radial-gradient(
+				ellipse 42% 46% at 90% 64%,
+				rgba(214, 217, 252, 0.26),
+				transparent 74%
+			),
+			var(--page-subtle);
+	}
+
+	.github-panel {
+		width: fit-content;
+		max-width: 100%;
+		margin-inline: auto;
+		overflow: hidden;
+		border: 1px solid var(--border-subtle);
+		border-radius: 0.875rem;
+		background: var(--page);
+	}
+
+	.github-panel-footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1.5rem;
+		border-top: 1px solid var(--border-subtle);
+		padding: 0.75rem 1rem;
+	}
+
+	.github-panel-footer .project-link {
+		margin-inline-start: auto;
+	}
+
+	.github-stats {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 2rem;
+	}
+
+	.github-stats dt {
+		font-family: var(--font-mono);
+		font-size: 0.625rem;
+		line-height: 1rem;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--neutral-500);
+	}
+
+	.github-stats dd {
+		margin-top: 0.125rem;
+		font-size: 1rem;
+		line-height: 1.5rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		font-variant-numeric: tabular-nums;
+		color: var(--neutral-950);
+	}
+
+	.github-fallback {
+		max-width: 34rem;
+		padding: clamp(1.5rem, 4vw, 2rem);
+		text-align: center;
+	}
+
+	.github-fallback h3 {
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--neutral-950);
+	}
+
+	.github-fallback-description {
+		margin-top: 0.5rem;
+		font-size: 0.9375rem;
+		line-height: 1.625rem;
+		color: var(--neutral-600);
+	}
+
+	.github-fallback .project-link {
+		margin-top: 0.75rem;
+	}
+
 	.hero-section {
 		position: relative;
 		isolation: isolate;

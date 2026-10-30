@@ -232,4 +232,32 @@ export const portfolio = {
 			},
 		],
 	},
+	github: {
+		intro: {
+			marker: "04 / GitHub",
+			title: "Side projects, in public",
+			description:
+				"My day-to-day engineering happens in private repositories. This is what I've built in public over the past year.",
+		},
+		username: "bkandh30",
+		profile: {
+			label: "View GitHub profile",
+			href: "https://github.com/bkandh30",
+		},
+		stats: {
+			activeDays: "Active days",
+			longestStreak: "Longest streak",
+			repositories: "Repos with commits",
+		},
+		empty: {
+			title: "No public activity in the last year",
+			description:
+				"Recent work hasn't been published yet. Everything that is public lives on my GitHub profile.",
+		},
+		unavailable: {
+			title: "Live activity is unavailable right now",
+			description:
+				"GitHub's contribution data couldn't be loaded. My public repositories are always available on my profile.",
+		},
+	},
 } as const;
