@@ -260,6 +260,66 @@ export const portfolio = {
 				"GitHub's contribution data couldn't be loaded. My public repositories are always available on my profile.",
 		},
 	},
+	skills: {
+		intro: {
+			marker: "05 / Skills",
+			title: "How my stack fits together",
+			description:
+				"The tools I work with, arranged by where they sit in a system.",
+		},
+		layers: [
+			{
+				name: "Client",
+				role: "Interfaces people use",
+				tools: [
+					"React",
+					"TypeScript",
+					"Angular",
+					"Next.js",
+					"TanStack Start",
+					"Tailwind CSS",
+				],
+			},
+			{
+				name: "API",
+				role: "Contracts between systems",
+				tools: ["REST APIs", "Spring Security", "tRPC", "JWT"],
+			},
+			{
+				name: "Services",
+				role: "Business logic and workflows",
+				tools: [
+					"Java",
+					"Spring Boot",
+					"Spring Batch",
+					"Kafka",
+					"Go",
+					"Rust",
+					"Node.js",
+				],
+				// the one layer the section leads with; its proof restates About's experience
+				focus:
+					"Where most of my production work lives: backend services for policy and claims workflows at Liberty Mutual, and batch workflows for document-heavy operations at EY GDS.",
+			},
+			{
+				name: "Data",
+				role: "Storage and access",
+				tools: ["PostgreSQL", "MySQL", "SQL", "JPA (Hibernate)", "Prisma"],
+			},
+			{
+				name: "Platform",
+				role: "Build, ship, and run",
+				tools: [
+					"AWS",
+					"Docker",
+					"Jenkins",
+					"GitHub Actions",
+					"Vercel",
+					"Cloudflare R2",
+				],
+			},
+		],
+	},
 	contact: {
 		intro: {
 			marker: "07 / Contact",

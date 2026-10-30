@@ -5,6 +5,7 @@ import { ContactSection } from "../components/contact-section";
 import { GitHubSection } from "../components/github-section";
 import { HeroSection } from "../components/hero-section";
 import { ProjectsSection } from "../components/projects-section";
+import { SkillsSection } from "../components/skills-section";
 import { getGitHubActivity } from "../lib/github";
 
 export const Route = createFileRoute("/")({
@@ -22,6 +23,7 @@ function App() {
 			<CapabilitiesSection />
 			<ProjectsSection />
 			<GitHubSection activity={githubActivity} />
+			<SkillsSection />
 			<ContactSection />
 		</main>
 	);
