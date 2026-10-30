@@ -320,6 +320,55 @@ export const portfolio = {
 			},
 		],
 	},
+	timeline: {
+		intro: {
+			marker: "06 / Timeline",
+			title: "The path so far",
+			description: "The milestones that shaped how I work.",
+		},
+		label: "Career timeline",
+		hint: "Drag to explore",
+		// Placeholder set: the three role starts mirror About's experience dates; the
+		// "milestone" entries are stand-ins. Confirm every entry before launch.
+		events: [
+			{
+				id: "ey-gds",
+				date: "2020-09-01",
+				title: "Joined EY GDS",
+				meta: "Associate Software Engineer",
+				kind: "role",
+			},
+			{
+				id: "placeholder-education",
+				date: "2023-08-01",
+				title: "Education milestone",
+				meta: "Placeholder",
+				kind: "education",
+			},
+			{
+				id: "liberty-mutual",
+				date: "2025-01-01",
+				title: "Joined Liberty Mutual",
+				meta: "Software Engineer",
+				kind: "role",
+			},
+			{
+				id: "placeholder-milestone",
+				date: "2025-09-01",
+				title: "Project milestone",
+				meta: "Placeholder",
+				kind: "milestone",
+			},
+			{
+				id: "softpoint",
+				date: "2026-05-01",
+				title: "Joined Softpoint",
+				meta: "Software Engineer II",
+				kind: "role",
+			},
+		],
+		kinds: { role: "Role", education: "Education", milestone: "Milestone" },
+	},
 	contact: {
 		intro: {
 			marker: "07 / Contact",
