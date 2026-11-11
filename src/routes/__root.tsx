@@ -41,7 +41,10 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 			},
 			{
 				rel: "stylesheet",
-				href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap",
+				// The design uses weight 400 only. The 400..700 ranges cost nothing
+				// extra (one variable file each) and keep not-yet-rebuilt sections
+				// from faking bold; trim them once every section is rebuilt.
+				href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@400..700&family=Inter:wght@400..700&display=swap",
 			},
 			{
 				rel: "stylesheet",
