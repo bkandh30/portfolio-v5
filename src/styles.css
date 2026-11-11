@@ -1593,7 +1593,15 @@ body,
 		color: var(--neutral-990);
 	}
 
-	.site-header-link:hover {
+	/* Hover only where there is a pointer, so a tap never leaves a link stuck violet;
+	a press shows violet everywhere. */
+	@media (hover: hover) {
+		.site-header-link:hover {
+			color: var(--brand);
+		}
+	}
+
+	.site-header-link:active {
 		color: var(--brand);
 	}
 
@@ -1603,7 +1611,8 @@ body,
 		inset-inline: 0;
 		top: 100%;
 		display: flex;
-		height: calc(100dvh - var(--header-height));
+		/* The menu only exists below the desktop layout, where the bar is 64px. */
+		height: calc(100dvh - 4rem);
 		flex-direction: column;
 		overflow-y: auto;
 		overscroll-behavior: contain;
@@ -1628,7 +1637,13 @@ body,
 		transition: color 0.3s var(--ease-control);
 	}
 
-	.site-menu-link:hover {
+	@media (hover: hover) {
+		.site-menu-link:hover {
+			color: var(--brand);
+		}
+	}
+
+	.site-menu-link:active {
 		color: var(--brand);
 	}
 
@@ -1646,7 +1661,13 @@ body,
 		transition: background-color 0.3s var(--ease-control);
 	}
 
-	.menu-toggle:hover,
+	@media (hover: hover) {
+		.menu-toggle:hover {
+			background: var(--brand-50);
+		}
+	}
+
+	.menu-toggle:active,
 	.menu-toggle[aria-expanded="true"] {
 		background: var(--brand-50);
 	}

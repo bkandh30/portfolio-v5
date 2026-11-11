@@ -73,7 +73,8 @@ export function SiteHeader() {
 			</a>
 
 			<header ref={headerRef} className="site-header">
-				<div className="site-header-inner flex h-[var(--header-height)] items-center gap-7">
+				{/* 64px bar below the desktop layout, as on stripe.com; 72px with the links. */}
+				<div className="site-header-inner flex h-16 items-center gap-7 min-[56.25rem]:h-[var(--header-height)]">
 					<a href="/" className="site-wordmark">
 						Bhavya Kandhari
 					</a>
@@ -91,23 +92,19 @@ export function SiteHeader() {
 					</nav>
 
 					<div className="ml-auto flex items-center gap-2">
-						{/* Phones keep the bar to the name and menu; the actions move inside it. */}
-						<div className="hidden items-center gap-2 sm:flex">
+						{/* Below the desktop layout the bar is only the name and menu, as on
+						stripe.com; the actions move to the bottom of the menu. */}
+						<div className="hidden items-center gap-2 min-[56.25rem]:flex">
 							<ButtonLink
 								href={resumeHref}
 								target="_blank"
 								rel="noreferrer"
 								variant="secondary"
 								size="compact"
-								className="max-[56.25rem]:min-h-11"
 							>
 								Resume
 							</ButtonLink>
-							<ButtonLink
-								href={contactHref}
-								size="compact"
-								className="max-[56.25rem]:min-h-11"
-							>
+							<ButtonLink href={contactHref} size="compact">
 								Contact
 							</ButtonLink>
 						</div>
@@ -166,7 +163,7 @@ export function SiteHeader() {
 				>
 					<nav
 						aria-label="Primary on phones"
-						className="site-header-inner flex w-full flex-1 flex-col pt-2 pb-6"
+						className="site-header-inner flex w-full flex-1 flex-col pt-4 pb-4"
 					>
 						<ul>
 							{navigationItems.map((item) => (
@@ -182,8 +179,12 @@ export function SiteHeader() {
 							))}
 						</ul>
 						{/* Pinned to the bottom of the sheet, as Stripe pins its call to action. */}
-						<div className="mt-auto grid grid-cols-2 gap-2 pt-6 sm:hidden">
-							<ButtonLink href={contactHref} onClick={closeMenu}>
+						<div className="mt-auto grid grid-cols-2 gap-2 pt-6">
+							<ButtonLink
+								href={contactHref}
+								className="min-h-11"
+								onClick={closeMenu}
+							>
 								Contact
 							</ButtonLink>
 							<ButtonLink
@@ -191,6 +192,7 @@ export function SiteHeader() {
 								target="_blank"
 								rel="noreferrer"
 								variant="secondary"
+								className="min-h-11"
 								onClick={closeMenu}
 							>
 								Resume
