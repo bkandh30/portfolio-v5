@@ -18,11 +18,8 @@ const desktopQuery = "(min-width: 56.25rem)";
 export function SiteHeader() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuButtonRef = useRef<HTMLButtonElement>(null);
+	const headerRef = useRef<HTMLElement>(null);
 	const closeMenu = () => setIsMenuOpen(false);
-	const closeMenuAndReturnFocus = () => {
-		closeMenu();
-		menuButtonRef.current?.focus();
-	};
 	const toggleMenu = () => {
 		// The Header scrolls away, so the sheet is measured from the top of the page.
 		if (!isMenuOpen && window.scrollY > 0) {
@@ -31,18 +28,37 @@ export function SiteHeader() {
 		setIsMenuOpen((isOpen) => !isOpen);
 	};
 
-	// While the sheet is open the page behind it stays still, and widening the
-	// window to the desktop layout closes it.
+	// While the sheet is open the page behind it stays still and out of reach:
+	// everything outside the Header is inert, so Tab and screen readers stay in
+	// the menu, as with a modal dialog. Widening to the desktop layout closes it.
 	useEffect(() => {
 		if (!isMenuOpen) return;
 		const root = document.documentElement;
 		const previousOverflow = root.style.overflow;
 		root.style.overflow = "hidden";
+		const header = headerRef.current;
+		const outside = [...document.body.children].filter(
+			(element): element is HTMLElement =>
+				element instanceof HTMLElement &&
+				element !== header &&
+				!element.contains(header) &&
+				!element.inert,
+		);
+		for (const element of outside) element.inert = true;
+		// Escape closes the menu wherever focus is, even on the browser's own stop.
+		const closeOnEscape = (event: KeyboardEvent) => {
+			if (event.key !== "Escape") return;
+			setIsMenuOpen(false);
+			menuButtonRef.current?.focus();
+		};
+		document.addEventListener("keydown", closeOnEscape);
 		const desktop = window.matchMedia(desktopQuery);
 		const closeOnDesktop = () => desktop.matches && setIsMenuOpen(false);
 		desktop.addEventListener("change", closeOnDesktop);
 		return () => {
 			root.style.overflow = previousOverflow;
+			for (const element of outside) element.inert = false;
+			document.removeEventListener("keydown", closeOnEscape);
 			desktop.removeEventListener("change", closeOnDesktop);
 		};
 	}, [isMenuOpen]);
@@ -56,7 +72,7 @@ export function SiteHeader() {
 				Skip to content
 			</a>
 
-			<header className="site-header">
+			<header ref={headerRef} className="site-header">
 				<div className="site-header-inner flex h-[var(--header-height)] items-center gap-7">
 					<a href="/" className="site-wordmark">
 						Bhavya Kandhari
@@ -104,11 +120,6 @@ export function SiteHeader() {
 							aria-expanded={isMenuOpen}
 							className="menu-toggle min-[56.25rem]:hidden"
 							onClick={toggleMenu}
-							onKeyDown={(event) => {
-								if (event.key === "Escape" && isMenuOpen) {
-									closeMenuAndReturnFocus();
-								}
-							}}
 						>
 							<svg
 								className="menu-bars"
@@ -156,11 +167,6 @@ export function SiteHeader() {
 					<nav
 						aria-label="Primary on phones"
 						className="site-header-inner flex w-full flex-1 flex-col pt-2 pb-6"
-						onKeyDown={(event) => {
-							if (event.key === "Escape") {
-								closeMenuAndReturnFocus();
-							}
-						}}
 					>
 						<ul>
 							{navigationItems.map((item) => (
