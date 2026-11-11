@@ -118,10 +118,11 @@
 	--chromatic-trail-half-width: 14%;
 	--chromatic-trail-inner-width: 7%;
 
-	/* Redesign layout: 1232px content between page-height rails (measured). */
+	/* Redesign layout, measured on stripe.com: 1232px of content, 16px inside
+	page-height rails that are simply centred. There is no gutter outside the
+	rails, so content sits 104px from the edge at 1440px and 16px on phones. */
 	--content-width: 77rem;
 	--rail-inset: 1rem;
-	--band-gutter: clamp(1.25rem, 7.2vw, 6.5rem);
 	--band-space: clamp(3rem, 4.5vw, 4rem);
 	--head-gap: clamp(2.5rem, 5.5vw, 5rem);
 }
@@ -397,7 +398,6 @@ body,
 	/* Redesign structure: a band spans the viewport, rails frame the content. */
 	.band {
 		position: relative;
-		padding-inline: var(--band-gutter);
 	}
 
 	.rails {
@@ -453,7 +453,8 @@ body,
 		padding-inline: 1.5rem;
 		font-size: 1rem;
 		line-height: 1.5;
-		font-weight: 400;
+		/* Inter 500 matches the visual weight of Stripe's Söhne 400 labels. */
+		font-weight: 500;
 		text-decoration: none;
 		cursor: pointer;
 		transition:
@@ -1555,7 +1556,6 @@ body,
 		z-index: 50;
 		border-bottom: 1px solid var(--neutral-50);
 		background: var(--neutral-0);
-		padding-inline: var(--band-gutter);
 	}
 
 	.site-header-inner {
@@ -1617,7 +1617,6 @@ body,
 		overflow-y: auto;
 		overscroll-behavior: contain;
 		background: var(--neutral-0);
-		padding-inline: var(--band-gutter);
 		transition:
 			opacity 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95),
 			visibility 0.3s;
