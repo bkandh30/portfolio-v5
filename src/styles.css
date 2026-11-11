@@ -274,8 +274,9 @@ body,
 		@apply border-border outline-ring/50;
 	}
 
+	/* The Header scrolls away, so anchors only need breathing room, not an offset. */
 	html {
-		scroll-padding-top: 5rem;
+		scroll-padding-top: 1.5rem;
 	}
 
 	:root {
@@ -1547,40 +1548,129 @@ body,
 		}
 	}
 
-	.menu-icon {
+	/* Header: aligned to the section rails, with one rule beneath. */
+	/* Scrolls away with the page, as Stripe's does. */
+	.site-header {
 		position: relative;
-		width: 1.125rem;
-		height: 1.125rem;
+		z-index: 50;
+		border-bottom: 1px solid var(--neutral-50);
+		background: var(--neutral-0);
+		padding-inline: var(--band-gutter);
 	}
 
-	.menu-icon svg {
+	.site-header-inner {
+		max-width: calc(var(--content-width) + 2 * var(--rail-inset));
+		margin-inline: auto;
+		padding-inline: var(--rail-inset);
+	}
+
+	.site-header-link {
+		display: inline-flex;
+		min-height: 2.5rem;
+		align-items: center;
+		font-size: 0.875rem;
+		/* Inter 500 matches the visual weight of Stripe's Söhne 400. */
+		font-weight: 500;
+		line-height: 1.45;
+		color: var(--neutral-990);
+		text-decoration: none;
+		transition: color 0.3s var(--ease-control);
+	}
+
+	/* The name is identity, not emphasis: the one heavier mark on the page. */
+	.site-wordmark {
+		font-family: var(--font-display);
+		font-size: 1.25rem;
+		line-height: 1.2;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		white-space: nowrap;
+		color: var(--neutral-990);
+		text-decoration: none;
+	}
+
+	.site-wordmark:hover {
+		color: var(--neutral-990);
+	}
+
+	.site-header-link:hover {
+		color: var(--brand);
+	}
+
+	/* Measured from stripe.com's phone menu: a full-height sheet that fades, never slides. */
+	.site-header-menu {
 		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
+		inset-inline: 0;
+		top: 100%;
+		display: flex;
+		height: calc(100dvh - var(--header-height));
+		flex-direction: column;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		background: var(--neutral-0);
+		padding-inline: var(--band-gutter);
 		transition:
-			opacity 240ms cubic-bezier(0.45, 0.05, 0.55, 0.95),
-			transform 250ms cubic-bezier(0.6, 0, 0.2, 0.5);
+			opacity 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95),
+			visibility 0.3s;
 	}
 
-	.menu-icon .hamburger {
-		opacity: 1;
-		transform: scale(1);
+	.site-menu-link {
+		display: flex;
+		min-height: 3.125rem;
+		align-items: center;
+		border-bottom: 1px dashed var(--neutral-50);
+		font-size: 1.125rem;
+		/* Inter 500 matches the visual weight of Stripe's Söhne 400. */
+		font-weight: 500;
+		line-height: 1.2;
+		color: var(--neutral-990);
+		text-decoration: none;
+		transition: color 0.3s var(--ease-control);
 	}
 
-	.menu-icon .close {
+	.site-menu-link:hover {
+		color: var(--brand);
+	}
+
+	/* Faint violet square, a step darker on hover and while open. */
+	.menu-toggle {
+		display: grid;
+		width: 2.75rem;
+		height: 2.75rem;
+		place-items: center;
+		border-radius: var(--radius-control);
+		background: var(--brand-25);
+		color: var(--brand);
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		transition: background-color 0.3s var(--ease-control);
+	}
+
+	.menu-toggle:hover,
+	.menu-toggle[aria-expanded="true"] {
+		background: var(--brand-50);
+	}
+
+	/* Four bars: the outer two fade while the middle two turn into the X. */
+	.menu-bars rect {
+		fill: currentColor;
+		transform-box: view-box;
+		transform-origin: 50% 50%;
+		transition:
+			transform 0.25s ease-in-out,
+			opacity 0.25s ease-in-out;
+	}
+
+	[aria-expanded="true"] .menu-bars .bar-outer {
 		opacity: 0;
-		transform: scale(0.8);
 	}
 
-	.menu-icon[data-open="true"] .hamburger {
-		opacity: 0;
-		transform: scale(0.8);
+	[aria-expanded="true"] .menu-bars .bar-cross-a {
+		transform: rotate(45deg);
 	}
 
-	.menu-icon[data-open="true"] .close {
-		opacity: 1;
-		transform: scale(1);
+	[aria-expanded="true"] .menu-bars .bar-cross-b {
+		transform: rotate(-45deg);
 	}
 }
 

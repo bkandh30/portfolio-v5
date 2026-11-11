@@ -19,7 +19,7 @@ function buttonClassName(
 ) {
 	return cn(
 		"btn",
-		variant === "primary" ? "btn-primary" : "btn-secondary",
+		`btn-${variant}`,
 		size === "compact" && "btn-compact",
 		className,
 	);
