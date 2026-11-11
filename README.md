@@ -34,13 +34,11 @@ If you prefer not to use Tailwind CSS:
 
 This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
 
-
 ```bash
 pnpm lint
 pnpm format
 pnpm check
 ```
-
 
 ## Deploy to Vercel
 
@@ -56,7 +54,6 @@ static assets. The included `vercel.json` makes framework detection explicit.
 Variables prefixed with `VITE_` are included in the browser bundle. Keep secrets
 unprefixed so they remain server-only.
 
-
 ## Shadcn
 
 Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
@@ -64,8 +61,6 @@ Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
 ```bash
 pnpm dlx shadcn@latest add button
 ```
-
-
 
 ## Routing
 
@@ -209,11 +204,9 @@ function PeopleComponent() {
 
 Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
 
-
 # Demo files
 
 Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
 
 # Learn More
 
