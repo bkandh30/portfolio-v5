@@ -72,7 +72,11 @@ export function SiteHeader() {
 				Skip to content
 			</a>
 
-			<header ref={headerRef} className="site-header">
+			<header
+				ref={headerRef}
+				className="site-header"
+				data-menu-open={isMenuOpen || undefined}
+			>
 				{/* 64px bar below the desktop layout, as on stripe.com; 72px with the links. */}
 				<div className="site-header-inner flex h-16 items-center gap-7 min-[56.25rem]:h-[var(--header-height)]">
 					<a href="/" className="site-wordmark">
