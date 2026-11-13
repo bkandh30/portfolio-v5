@@ -112,10 +112,10 @@
 	--layout-content-max: 68rem;
 	--layout-gutter: clamp(1.25rem, 4vw, 4rem);
 	--header-height: 4.5rem;
+	/* The Header bar as drawn: 64px, or 72px once the desktop links appear. */
+	--header-bar: 4rem;
 	--section-space: clamp(4rem, 7vw, 6.5rem);
 	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-	--chromatic-trail-half-width: 14%;
-	--chromatic-trail-inner-width: 7%;
 
 	/* Redesign layout, measured on stripe.com: 1232px of content, 16px inside
 	page-height rails that are simply centred. There is no gutter outside the
@@ -124,6 +124,12 @@
 	--rail-inset: 1rem;
 	--band-space: clamp(3rem, 4.5vw, 4rem);
 	--head-gap: clamp(2.5rem, 5.5vw, 5rem);
+}
+
+@media (min-width: 56.25rem) {
+	:root {
+		--header-bar: var(--header-height);
+	}
 }
 
 @theme inline {
@@ -1241,155 +1247,303 @@ body,
 		}
 	}
 
-	.hero-section {
+	/* The Opening: copy left, the person right on a colour field. The band is pulled
+	up under the transparent Header so the field runs to the top of the page, as
+	Stripe's artwork does; its padding puts the content back below the bar. */
+	.opening {
 		position: relative;
+		/* Keeps the field's negative layer inside the Opening. */
 		isolation: isolate;
 		overflow: hidden;
-		border-bottom: 1px solid var(--border-subtle);
-		background:
-			radial-gradient(
-				ellipse 70% 75% at 82% 30%,
-				var(--glow-brand),
-				transparent 64%
-			),
-			radial-gradient(
-				ellipse 38% 42% at 96% 8%,
-				var(--glow-magenta),
-				transparent 70%
-			),
-			linear-gradient(135deg, var(--brand-subtle) 0%, var(--page) 44%);
+		margin-top: calc(-1 * var(--header-bar));
+		padding-top: var(--header-bar);
 	}
 
-	.hero-section::before {
+	/* The rule under the Header (measured on stripe.com: the header has no border; a
+	full-width rule sits below it and runs across the artwork). */
+	.opening::before {
 		position: absolute;
-		top: -21.875rem;
-		right: -15rem;
-		z-index: 0;
-		width: min(66vw, 59.375rem);
-		height: 48.75rem;
+		top: var(--header-bar);
+		inset-inline: 0;
+		height: 1px;
+		background: var(--neutral-50);
+		content: "";
+	}
+
+	.opening-rails {
+		display: grid;
+		padding-block: 0;
+	}
+
+	.opening-copy {
+		align-self: center;
+		padding-block: clamp(2.5rem, 6vw, 4.5rem);
+	}
+
+	.opening-status::before {
+		display: inline-block;
+		width: 0.5rem;
+		height: 0.5rem;
+		margin-right: 0.5rem;
+		border-radius: 50%;
+		background: var(--status-success);
+		content: "";
+	}
+
+	.opening-person {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-block: 2.5rem;
+	}
+
+	/* The colour field: violet, magenta, orange and lemon at full strength. It sits
+	beneath the grid, so the rails and the rule under the Header run across it, as
+	Stripe's lines cross its artwork. On phones it is a plain band behind the
+	portrait; on desktop it becomes a ribbon (below). */
+	.opening-person::before {
+		position: absolute;
+		z-index: -1;
 		background:
 			radial-gradient(
-				ellipse at 20% 65%,
-				rgba(110, 195, 244, 0.78) 0%,
-				rgba(112, 56, 255, 0.62) 28%,
-				transparent 58%
+				70% 55% at 0% 0%,
+				var(--field-violet) 25%,
+				transparent 100%
 			),
 			radial-gradient(
-				ellipse at 70% 65%,
-				rgba(239, 0, 143, 0.68) 0%,
-				rgba(255, 120, 73, 0.62) 45%,
-				transparent 72%
+				60% 60% at 100% 100%,
+				var(--field-lemon) 10%,
+				transparent 100%
+			),
+			radial-gradient(
+				70% 60% at 85% 20%,
+				var(--field-magenta) 15%,
+				transparent 100%
 			),
 			linear-gradient(
-				135deg,
-				#8dcdf6 0%,
-				#7b56f0 30%,
-				#d94eb0 57%,
-				#f38a68 78%,
-				#f7c15b 100%
+				150deg,
+				var(--field-violet) 0%,
+				var(--field-magenta) 40%,
+				var(--field-orange) 75%,
+				var(--field-lemon) 100%
 			);
-		clip-path: polygon(26% 0%, 100% 0%, 100% 100%, 58% 100%);
 		content: "";
-		filter: blur(8px);
-		opacity: 0.68;
-		pointer-events: none;
-		transform: rotate(-7deg);
 	}
 
-	.hero-section > .content-container {
-		z-index: 1;
+	.opening-figure {
+		position: relative;
+		width: min(18.75rem, 85%);
 	}
 
-	.hero-grid {
+	/* A portrait panel: the cutout stands on a Slate backdrop, a studio tone that
+	separates the panel from both the white page and the field. The figure is
+	larger than the panel, so its shoulders run off the bottom and sides. */
+	.opening-portrait {
+		position: relative;
+		aspect-ratio: 4 / 5;
+		overflow: hidden;
+		border-radius: var(--radius-panel);
+		background: linear-gradient(180deg, var(--neutral-100), var(--neutral-200));
+		box-shadow: var(--shadow-panel);
+	}
+
+	.opening-portrait img {
 		position: absolute;
-		inset: 0;
-		z-index: -1;
-		background-image:
-			linear-gradient(to right, rgba(83, 58, 253, 0.055) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(83, 58, 253, 0.045) 1px, transparent 1px);
-		background-size: 4.5rem 4.5rem;
-		mask-image: linear-gradient(
-			to right,
-			transparent 4%,
-			black 58%,
-			black 100%
-		);
-		opacity: 0.7;
+		bottom: 0;
+		left: 50%;
+		width: auto;
+		max-width: none;
+		height: 118%;
+		translate: -50% 14%;
 	}
 
-	.chromatic-text-word {
-		position: absolute;
-		inset-block-start: -0.08em;
-		inset-inline-start: -0.05em;
-		padding: 0.08em 0.05em;
-		background-image: linear-gradient(
-			90deg,
-			var(--text-primary) 0%,
-			var(--text-primary)
-				calc(var(--chromatic-sweep) - var(--chromatic-trail-half-width)),
-			var(--brand-700)
-				calc(var(--chromatic-sweep) - var(--chromatic-trail-half-width)),
-			var(--brand-500)
-				calc(var(--chromatic-sweep) - var(--chromatic-trail-inner-width)),
-			var(--brand-300) var(--chromatic-sweep),
-			var(--accent-magenta)
-				calc(var(--chromatic-sweep) + var(--chromatic-trail-inner-width)),
-			var(--accent-orange)
-				calc(var(--chromatic-sweep) + var(--chromatic-trail-half-width)),
-			transparent
-				calc(var(--chromatic-sweep) + var(--chromatic-trail-half-width)),
-			transparent 100%
-		);
-		background-clip: text;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
-		color: transparent;
-		white-space: nowrap;
+	.opening-note {
+		border-radius: var(--radius-panel);
+		background: var(--neutral-0);
+		box-shadow: var(--shadow-float);
+		padding: 0.75rem 1rem;
+		font-size: 0.875rem;
+		line-height: 1.45;
+		color: var(--neutral-600);
 	}
 
-	.hero-portrait-orbit {
-		position: absolute;
-		top: -4%;
-		left: -7%;
-		z-index: -1;
-		width: 52%;
-		aspect-ratio: 1;
-		border: 1px solid var(--brand-200);
-		border-radius: 999px;
-		box-shadow:
-			0 0 0 1rem rgba(154, 154, 254, 0.07),
-			0 0 0 2rem rgba(154, 154, 254, 0.035);
+	/* Desktop. The copy starts on the shared left edge, under the wordmark, and
+	sits in equal space above and below (148px at full width; stripe.com measures 138
+	and 126 around its block). The portrait panel's right edge is the content edge,
+	under the Contact button, and it is centred on the same line as the text block.
+	Everything eases down towards 900px. */
+	@media (min-width: 56.25rem) {
+		.opening {
+			--opening-space: clamp(5rem, 12.6vw - 2.08rem, 9.25rem);
+			--portrait-width: clamp(15rem, 17.8vw + 5rem, 21rem);
+		}
+
+		.opening-rails {
+			grid-template-columns: minmax(0, 1fr) var(--portrait-width);
+			column-gap: 4rem;
+		}
+
+		.opening-copy {
+			padding-block: var(--opening-space);
+		}
+
+		.opening-person {
+			padding-block: 2.5rem;
+		}
+
+		.opening-figure {
+			width: 100%;
+		}
+
+		/* The ribbon. Its geometry is measured from the portrait panel (P, its
+		width) rather than the screen, so it keeps its shape at every width. Its box
+		runs from 0.3P left of the panel to 0.91P right of it, from the top of the
+		page to the hero's bottom rule. The outer edge is one quarter ellipse
+		filling that box, from the top left to the bottom right corner; the inner
+		edge is the same curve inset by the band's width, so the ribbon is even
+		along its length. That width puts the inner edge, at the top, 32px left of
+		Resume (Resume, gap and Contact are 216px), so both Header buttons sit on
+		plain page and the ribbon passes behind the panel's top and out at its
+		right side. The colour flows along the arc: violet where it rises behind
+		the Header, through magenta and orange, to lemon at the tip. */
+		.opening {
+			--band-width: calc(1.3 * var(--portrait-width) - 15.5rem);
+			--band-inner: calc(2.21 * var(--portrait-width) - var(--band-width));
+		}
+
+		.opening-person::before {
+			top: calc(-1 * var(--header-bar));
+			bottom: 0;
+			left: calc(-0.3 * var(--portrait-width));
+			right: calc(-0.91 * var(--portrait-width));
+			border-bottom-left-radius: 100% 100%;
+			background: conic-gradient(
+				from 180deg at 100% 0%,
+				var(--field-lemon) 0deg,
+				var(--field-orange) 28deg,
+				var(--field-magenta) 58deg,
+				var(--field-violet) 90deg
+			);
+		}
+
+		/* The inner edge: a page-coloured ellipse centred on the arc's centre (the
+		box's top right corner), drawn over the field and beneath everything else.
+		A mask cannot do this, because browsers reject gradient sizes that mix
+		percentages and lengths. */
+		.opening-person::after {
+			position: absolute;
+			z-index: -1;
+			top: calc(
+				-1 *
+				var(--header-bar) -
+				(100% + var(--header-bar) - var(--band-width))
+			);
+			right: calc(-0.91 * var(--portrait-width) - var(--band-inner));
+			width: calc(2 * var(--band-inner));
+			height: calc(2 * (100% + var(--header-bar) - var(--band-width)));
+			border-radius: 50%;
+			background: var(--neutral-0);
+			content: "";
+		}
+
+		/* The note pins the panel's lower left corner, below the face. It reaches
+		across the gap to the text column's edge, so its left edge sits on that grid
+		line and each of its two lines stays whole; beside the panel the field's edge
+		is hidden behind it, so only plain page lies under the overhang. */
+		.opening-note {
+			position: absolute;
+			left: -4rem;
+			bottom: 1rem;
+			width: max-content;
+			max-width: calc(100% + 4rem);
+		}
 	}
 
+	/* Phones: the field is a plain band under the bar, the portrait comes first at
+	a small size beside its note, then the statement. */
+	@media (max-width: 56.249rem) {
+		.opening-copy {
+			order: 2;
+			padding-block: 2rem 3rem;
+		}
+
+		.opening-person {
+			order: 1;
+			justify-content: flex-start;
+			/* Out past the rails' 1px borders too, so the band meets the screen edges. */
+			margin-inline: calc(-1px - var(--rail-inset));
+			padding: 1.5rem calc(1px + var(--rail-inset));
+			/* The band ends cleanly: the portrait's shadow stays inside it, while the
+			field still runs up behind the Header. */
+			clip-path: inset(calc(-1 * var(--header-bar)) 0 0);
+		}
+
+		/* On phones the rails sit on the screen edges, so the band covers them
+		rather than showing two seams. */
+		.opening-person::before {
+			z-index: auto;
+			inset: calc(-1 * var(--header-bar)) 0 0;
+			border-radius: 0;
+		}
+
+		.opening-figure {
+			display: flex;
+			width: 100%;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.opening-portrait {
+			width: 6.5rem;
+			flex: none;
+		}
+
+		.opening-note {
+			position: static;
+			width: auto;
+			/* Fills a phone beside the portrait, but stays a note on tablets. */
+			flex: 0 1 20rem;
+		}
+	}
+
+	/* The page's one authored moment: the field arrives and settles behind the
+	portrait. It is decoration, so nothing waits for it. */
 	@media (prefers-reduced-motion: no-preference) {
-		.hero-copy {
-			animation: hero-enter 600ms var(--ease-out) both;
+		.opening-person::before {
+			animation: field-arrive 0.8s var(--ease-reveal) both;
 		}
 
-		.hero-portrait {
-			animation: hero-enter 700ms 100ms var(--ease-out) both;
-		}
-	}
-
-	@media (max-width: 48rem) {
-		.hero-section::before {
-			top: -16.25rem;
-			right: -17.5rem;
-			width: 34rem;
-			height: 29rem;
-			clip-path: polygon(32% 0%, 100% 0%, 100% 100%, 64% 100%);
-			filter: blur(6px);
-			opacity: 0.46;
-			transform: rotate(-7deg);
+		/* The ribbon's inner edge moves with it, so the two never drift apart. */
+		.opening-person::after {
+			animation: field-arrive-edge 0.8s var(--ease-reveal) both;
 		}
 	}
 
-	/* Header: aligned to the section rails, with one rule beneath. */
-	/* Scrolls away with the page, as Stripe's does. */
+	/* Header: aligned to the section rails. Scrolls away with the page and is
+	transparent with no border, as Stripe's is (measured), so the Opening's field
+	runs up behind it; the Opening draws the rule beneath it. */
 	.site-header {
 		position: relative;
 		z-index: 50;
-		border-bottom: 1px solid var(--neutral-50);
+		background: transparent;
+		transition: background-color 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+	}
+
+	/* The bar joins the white sheet while the phone menu is open. */
+	.site-header[data-menu-open] {
+		background: var(--neutral-0);
+	}
+
+	/* Over the colour field a violet ring alone is too faint (about 2:1 on magenta),
+	so it sits on a white halo; on a white page this looks exactly as before. */
+	.site-header :focus-visible {
+		box-shadow: 0 0 0 calc(3px + 2px + 2px) var(--neutral-0);
+	}
+
+	/* Resume sits over the colour field, so it is filled white to keep its violet
+	label legible; on a white page it looks exactly as before. */
+	.site-header .btn-secondary:not(:hover) {
 		background: var(--neutral-0);
 	}
 
@@ -1529,15 +1683,16 @@ body,
 	}
 }
 
-@keyframes hero-enter {
+@keyframes field-arrive {
 	from {
 		opacity: 0;
-		transform: translateY(1rem);
+		transform: translateX(4rem);
 	}
+}
 
-	to {
-		opacity: 1;
-		transform: translateY(0);
+@keyframes field-arrive-edge {
+	from {
+		transform: translateX(4rem);
 	}
 }
 
