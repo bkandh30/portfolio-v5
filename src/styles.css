@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@plugin "@tailwindcss/typography";
 
 :root {
 	color-scheme: light;
@@ -370,13 +369,6 @@ body,
 		padding: 0;
 		color: inherit;
 		font-size: inherit;
-	}
-
-	.prose pre {
-		border: 1px solid var(--border-subtle);
-		border-radius: 0.75rem;
-		background: var(--neutral-900);
-		color: var(--neutral-25);
 	}
 }
 
