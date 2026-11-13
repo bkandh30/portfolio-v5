@@ -1398,8 +1398,11 @@ body,
 
 		/* The ribbon. Its geometry is measured from the portrait panel (P, its
 		width) rather than the screen, so it keeps its shape at every width. Its box
-		runs from 0.3P left of the panel to 0.91P right of it, from the top of the
-		page to the hero's bottom rule. The outer edge is one quarter ellipse
+		runs from 0.3P left of the panel to a reach of 0.91P right of it, from the
+		top of the page to the hero's bottom rule. From 1440px down to 1264px the
+		reach shrinks to the screen edge (the rails meet the screen at 1264px), so
+		on tablets and small laptops the ribbon's tail still ends on screen, at the
+		bottom right corner, instead of leaving a fragment under the portrait. The outer edge is one quarter ellipse
 		filling that box, from the top left to the bottom right corner; the inner
 		edge is the same curve inset by the band's width, so the ribbon is even
 		along its length. That width puts the inner edge, at the top, 32px left of
@@ -1409,14 +1412,31 @@ body,
 		the Header, through magenta and orange, to lemon at the tip. */
 		.opening {
 			--band-width: calc(1.3 * var(--portrait-width) - 15.5rem);
-			--band-inner: calc(2.21 * var(--portrait-width) - var(--band-width));
+			--band-reach: min(
+				calc(0.91 * var(--portrait-width)),
+				max(
+					calc(var(--rail-inset) + 1px),
+					calc(
+						var(--rail-inset) +
+						1px +
+						(100vw - var(--content-width) - 2 * var(--rail-inset)) *
+						1.65
+					)
+				)
+			);
+			--band-inner: calc(
+				1.3 *
+				var(--portrait-width) +
+				var(--band-reach) -
+				var(--band-width)
+			);
 		}
 
 		.opening-person::before {
 			top: calc(-1 * var(--header-bar));
 			bottom: 0;
 			left: calc(-0.3 * var(--portrait-width));
-			right: calc(-0.91 * var(--portrait-width));
+			right: calc(-1 * var(--band-reach));
 			border-bottom-left-radius: 100% 100%;
 			background: conic-gradient(
 				from 180deg at 100% 0%,
@@ -1439,7 +1459,7 @@ body,
 				var(--header-bar) -
 				(100% + var(--header-bar) - var(--band-width))
 			);
-			right: calc(-0.91 * var(--portrait-width) - var(--band-inner));
+			right: calc(-1 * var(--band-reach) - var(--band-inner));
 			width: calc(2 * var(--band-inner));
 			height: calc(2 * (100% + var(--header-bar) - var(--band-width)));
 			border-radius: 50%;
