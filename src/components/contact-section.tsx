@@ -1,19 +1,12 @@
-import { ArrowUpRight, Check, Copy, Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { portfolio } from "../data/portfolio";
-import { GithubIcon, LinkedinIcon } from "./brand-icons";
-import { SectionIntro } from "./section-intro";
+import { ActionLink, Button, ButtonLink } from "./ui/button";
 
 type CopyState = "idle" | "copied" | "failed";
 
 const COPY_RESET_DELAY = 2000;
 
-const linkIcons = {
-	linkedin: LinkedinIcon,
-	github: GithubIcon,
-	resume: Download,
-} as const;
-
+// The label changes for sighted users; a status message tells screen readers.
 function CopyEmailButton() {
 	const { email } = portfolio.contact;
 	const [state, setState] = useState<CopyState>("idle");
@@ -35,18 +28,11 @@ function CopyEmailButton() {
 		}
 	};
 
-	const Icon = state === "copied" ? Check : Copy;
-
 	return (
 		<>
-			<button
-				type="button"
-				onClick={copy}
-				className="inline-flex min-h-11 min-w-[9.5rem] flex-1 items-center justify-center gap-2 rounded-md border border-neutral-100 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-800 transition-[background-color,border-color,color] hover:border-brand-200 hover:bg-brand-25 hover:text-brand-700 sm:flex-none"
-			>
-				<Icon aria-hidden="true" className="size-4" strokeWidth={1.8} />
+			<Button variant="secondary" onClick={copy}>
 				{email.copy[state]}
-			</button>
+			</Button>
 			<span role="status" className="sr-only">
 				{state === "idle" ? "" : email.announcements[state]}
 			</span>
@@ -54,6 +40,8 @@ function CopyEmailButton() {
 	);
 }
 
+// Contact: the page's close. One Display line, "Let's talk." in Quiet Slate
+// then the email in Ink as selectable text, the two actions, and quiet links.
 export function ContactSection() {
 	const { contact } = portfolio;
 
@@ -61,66 +49,36 @@ export function ContactSection() {
 		<section
 			id="contact"
 			aria-labelledby="contact-title"
-			className="contact-section pt-[var(--section-space)] pb-[clamp(2.75rem,4.5vw,4rem)]"
+			className="band contact-band"
 		>
-			<div className="content-container">
-				<SectionIntro
-					id="contact-title"
-					marker={contact.intro.marker}
-					title={contact.intro.title}
-					description={contact.intro.description}
-				/>
+			<div className="rails">
+				<h2 id="contact-title" className="contact-statement text-display">
+					<span className="quiet">{contact.lead}</span> {contact.email.address}
+				</h2>
 
-				<div className="contact-card mt-[clamp(2.25rem,4vw,3rem)]">
-					<p className="contact-email">{contact.email.address}</p>
-
-					<div className="contact-actions">
-						<a
-							href={`mailto:${contact.email.address}`}
-							className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md bg-neutral-990 px-5 py-2.5 text-sm font-semibold text-neutral-0 no-underline shadow-sm transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-brand-700 hover:text-neutral-0 sm:flex-none"
-						>
-							{contact.email.send}
-							<ArrowUpRight
-								aria-hidden="true"
-								className="size-4"
-								strokeWidth={2}
-							/>
-						</a>
-						<CopyEmailButton />
-					</div>
+				<div className="contact-actions">
+					<ButtonLink href={`mailto:${contact.email.address}`}>
+						{contact.email.send}
+					</ButtonLink>
+					<CopyEmailButton />
 				</div>
 
 				<ul className="contact-links" aria-label="Other ways to connect">
-					{contact.links.map((link) => {
-						const Icon = linkIcons[link.kind];
-						const isDownload = "download" in link;
-
-						return (
-							<li key={link.label}>
-								<a
-									href={link.href}
-									download={isDownload ? link.download : undefined}
-									target={isDownload ? undefined : "_blank"}
-									rel={isDownload ? undefined : "noreferrer"}
-									className="project-link"
-								>
-									<Icon
-										aria-hidden="true"
-										className="size-4"
-										strokeWidth={1.8}
-									/>
-									{link.label}
-									{isDownload ? null : (
-										<ArrowUpRight
-											aria-hidden="true"
-											className="project-link-arrow size-4"
-											strokeWidth={1.8}
-										/>
-									)}
-								</a>
-							</li>
-						);
-					})}
+					{contact.links.map((link) => (
+						<li key={link.label}>
+							{/* Plain text links, as in the mock: the button's chevron is the
+							one arrow here, so it points to the main action. */}
+							<ActionLink
+								href={link.href}
+								target="_blank"
+								rel="noreferrer"
+								chevron={false}
+							>
+								{link.label}
+								<span className="sr-only"> (opens in a new tab)</span>
+							</ActionLink>
+						</li>
+					))}
 				</ul>
 			</div>
 		</section>
