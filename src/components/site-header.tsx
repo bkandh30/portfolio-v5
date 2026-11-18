@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { ButtonLink } from "./ui/button";
 
 // How I build points at the section its own branch will add; production is not
-// on this domain yet, so the gap is accepted. Work becomes #work when rebuilt.
+// on this domain yet, so the gap is accepted.
 // Contact is the primary action rather than a link, like Stripe's "Contact sales".
 const navigationItems = [
-	{ label: "Work", href: "/#projects" },
+	{ label: "Work", href: "/#work" },
 	{ label: "How I build", href: "/#how" },
 	{ label: "Skills", href: "/#skills" },
 	{ label: "Experience", href: "/#experience" },

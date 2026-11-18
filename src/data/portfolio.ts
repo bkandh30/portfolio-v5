@@ -9,8 +9,7 @@ export const portfolio = {
 				"A backend engineer who turns ambiguous requirements into production-ready services.",
 		},
 		actions: {
-			// Work is still #projects until that section is rebuilt.
-			primary: { label: "See my work", href: "/#projects" },
+			primary: { label: "See my work", href: "/#work" },
 			secondary: { label: "Get in touch", href: "/#contact" },
 		},
 		availability: "Open to opportunities",
@@ -78,63 +77,55 @@ export const portfolio = {
 			},
 		],
 	},
-	projects: {
-		intro: {
-			marker: "03 / Projects",
-			title: "Selected work, built with intent",
-			description:
-				"A closer look at three projects that show how I approach systems, product decisions, and delivery.",
+	work: {
+		// One two-tone sentence. Budget: 20 words, 3 lines.
+		statement: {
+			lead: "Selected work.",
+			continuation: "Projects I've built, and the decisions behind them.",
 		},
-		featured: {
-			label: "Featured project / End-to-end product",
+		// The lead project sits beside the statement and then in the colour field.
+		// The future flagship replaces Scouttrace here with content changes only.
+		// Budget: 2 sentences.
+		lead: {
 			name: "Scouttrace",
-			purpose:
-				"A full-stack workspace for discovering, saving, and summarizing web content.",
 			summary:
 				"I built the authenticated path from discovery and import through persisted processing states and streaming AI summaries.",
-			highlights: [
-				"Connected content discovery and imports to a persisted model with pending, processing, completed, and failed states.",
-				"Built an authenticated streaming summary endpoint so generated output reaches the interface progressively.",
-				"Modeled user-owned items, summaries, tags, authors, and source metadata in PostgreSQL through Prisma.",
-			],
 			stack: [
 				"TanStack Start",
 				"TypeScript",
 				"PostgreSQL",
 				"Prisma",
 				"Better Auth",
-				"Firecrawl",
-				"OpenRouter",
 			],
 			links: [
-				{
-					label: "View source",
-					href: "https://github.com/bkandh30/scouttrace",
-					kind: "source",
-				},
-				{
-					label: "Live product",
-					href: "https://scouttrace.vercel.app/",
-					kind: "live",
-				},
+				{ label: "Live product", href: "https://scouttrace.vercel.app/" },
+				{ label: "Source", href: "https://github.com/bkandh30/scouttrace" },
 			],
+			// The dashboard from the public landing page; its items are demonstration
+			// data. A screen from the logged-in app would be stronger.
 			image: {
-				src: "/images/projects/scouttrace.webp",
-				alt: "Scouttrace landing page with a preview of its saved-content dashboard",
-				width: 1800,
-				height: 1040,
+				src: "/images/projects/scouttrace-dashboard.webp",
+				alt: "Scouttrace dashboard showing saved items with Completed and Pending states",
+				width: 2048,
+				height: 822,
+			},
+			// One decision, explained over the screen without covering what it explains.
+			// `code` is a real term or state from the project; arrows and bars are
+			// drawn in violet.
+			note: {
+				title: "Why I persisted every state",
+				body: "So a failed import stays visible instead of disappearing.",
+				code: "pending → processing → completed | failed",
 			},
 		},
+		// Compact rows on Pale Paper. Each diagram must match the source: the first
+		// node leads to each branch, and each branch is a chain. GoFlix is shown in
+		// How I Build (the night band), so it has no row here.
 		supporting: [
 			{
-				label: "Shipped product / Media workflows",
 				name: "EchoForge",
-				purpose:
-					"An AI-powered text-to-speech workspace for turning scripts into audio with built-in or custom voices.",
-				highlights: [
-					"Modeled organization-owned voices and generations, including built-in and custom voice workflows.",
-					"Connected typed APIs and Prisma persistence to generated media stored in Cloudflare R2.",
-				],
+				summary:
+					"A text-to-speech workspace. I modeled organization-owned voices and generations, and connected typed APIs to generated media.",
 				stack: [
 					"Next.js",
 					"TypeScript",
@@ -144,37 +135,15 @@ export const portfolio = {
 					"Cloudflare R2",
 				],
 				links: [
-					{
-						label: "View source",
-						href: "https://github.com/bkandh30/echoforge",
-						kind: "source",
-					},
-					{
-						label: "Live product",
-						href: "https://echoforgelabs.vercel.app/",
-						kind: "live",
-					},
+					{ label: "Live product", href: "https://echoforgelabs.vercel.app/" },
+					{ label: "Source", href: "https://github.com/bkandh30/echoforge" },
 				],
-				visual: "audio",
-			},
-			{
-				label: "Backend system / API engineering",
-				name: "GoFlix",
-				purpose:
-					"A production-oriented JSON API for managing movies, users, and authenticated workflows.",
-				highlights: [
-					"Implemented movie CRUD, PostgreSQL migrations, user registration, activation, and JWT authentication.",
-					"Added background email delivery, runtime metrics, and graceful shutdown behavior.",
-				],
-				stack: ["Go", "PostgreSQL", "httprouter", "JWT", "bcrypt"],
-				links: [
-					{
-						label: "View source",
-						href: "https://github.com/bkandh30/GoFlix",
-						kind: "source",
-					},
-				],
-				visual: "api",
+				diagram: {
+					label:
+						"EchoForge: typed tRPC APIs lead to Prisma and PostgreSQL for records, and to Cloudflare R2 for generated media",
+					from: "tRPC",
+					branches: [["Prisma", "PostgreSQL"], ["Cloudflare R2"]],
+				},
 			},
 		],
 	},
