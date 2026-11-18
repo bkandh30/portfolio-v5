@@ -8,31 +8,29 @@ function separatorBefore(index: number, count: number) {
 	return count > 2 ? ", and " : " and ";
 }
 
+// The footer on every route: one quiet row on the page's edges, the owner on
+// the left and the credits on the right; phones stack them, left-aligned.
 export function SiteFooter() {
 	const { footer } = portfolio;
 
 	return (
-		<footer className="border-neutral-50 border-t bg-neutral-25">
-			<div className="site-container py-[clamp(2rem,3.5vw,2.75rem)] text-center">
-				<p className="text-sm leading-6 text-neutral-600">
+		<footer className="site-footer">
+			<div className="rails">
+				<p>
+					© {new Date().getFullYear()} {footer.owner}
+				</p>
+				<p>
 					Built with{" "}
 					{footer.builtWith.map((technology, index) => (
 						<Fragment key={technology.label}>
 							{separatorBefore(index, footer.builtWith.length)}
-							<a
-								href={technology.href}
-								target="_blank"
-								rel="noreferrer"
-								className="font-medium text-neutral-700 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-brand-700 hover:decoration-brand-300"
-							>
+							<a href={technology.href} target="_blank" rel="noreferrer">
 								{technology.label}
+								<span className="sr-only"> (opens in a new tab)</span>
 							</a>
 						</Fragment>
 					))}
 					.
-				</p>
-				<p className="mt-2 text-[0.8125rem] leading-5 text-neutral-500">
-					© {new Date().getFullYear()} {footer.owner}. {footer.rights}
 				</p>
 			</div>
 		</footer>

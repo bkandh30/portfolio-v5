@@ -1023,38 +1023,6 @@ body,
 		}
 	}
 
-	.project-links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem 1.25rem;
-		margin-top: 0.875rem;
-	}
-
-	.project-link {
-		display: inline-flex;
-		min-height: 2.75rem;
-		align-items: center;
-		gap: 0.4375rem;
-		font-size: 0.8125rem;
-		line-height: 1.25rem;
-		font-weight: 700;
-		color: var(--neutral-800);
-		text-decoration: none;
-	}
-
-	.project-link:hover {
-		color: var(--brand-700);
-	}
-
-	.project-link-arrow {
-		transition: transform 180ms var(--ease-out);
-	}
-
-	.project-link:hover .project-link-arrow,
-	.project-link:focus-visible .project-link-arrow {
-		transform: translate(0.125rem, -0.125rem);
-	}
-
 	/* In Public: the second half of the night band. As in the approved preview,
 	a rule across the content and 48px either side separate it from How I
 	Build, and the calendar panel sits 24px under its statement. */
@@ -1330,63 +1298,60 @@ body,
 		}
 	}
 
-	.contact-section {
-		background:
-			radial-gradient(
-				ellipse 46% 58% at 50% 100%,
-				rgba(214, 217, 252, 0.42),
-				transparent 72%
-			),
-			var(--page);
+	/* Contact: the page's close on Pale Paper. One Display line, "Let's talk."
+	in Quiet Slate then the email in Ink, the two actions, and quiet links. */
+	.contact-band {
+		background: var(--neutral-25);
 	}
 
-	.contact-card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		max-width: 40rem;
-		margin-inline: auto;
-		text-align: center;
-		border: 1px solid var(--border-subtle);
-		border-radius: 0.875rem;
-		background: linear-gradient(
-			135deg,
-			rgba(245, 245, 255, 0.96),
-			rgba(248, 250, 253, 0.88)
-		);
-		padding: clamp(1.75rem, 4vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
-	}
-
-	.contact-email {
-		font-size: clamp(1.125rem, 2.6vw, 1.5rem);
-		line-height: 1.3;
-		font-weight: 700;
-		letter-spacing: -0.03em;
-		color: var(--neutral-950);
+	.contact-statement {
 		overflow-wrap: anywhere;
 	}
 
 	.contact-actions {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
+		align-items: center;
 		gap: 0.75rem;
-		width: 100%;
-		margin-top: 1.5rem;
+		margin-top: 2rem;
 	}
 
 	.contact-links {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0.25rem 1.75rem;
-		margin-top: 1.25rem;
+		column-gap: 1.5rem;
+		margin-top: 1rem;
 	}
 
-	@media (min-width: 40rem) {
-		.contact-actions {
-			width: auto;
-		}
+	/* The footer keeps the rails to the page's end: one small, quiet row,
+	left-aligned like everything else (centring is reserved for one moment),
+	owner on the left and credits on the right. Phones stack the two. */
+	.site-footer {
+		border-top: 1px solid var(--neutral-50);
+		color: var(--neutral-500);
+		font-size: var(--text-small);
+		line-height: var(--text-small--line-height);
+	}
+
+	.site-footer .rails {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.25rem 2rem;
+		padding-block: 1.5rem;
+	}
+
+	.site-footer a {
+		color: var(--neutral-600);
+		text-decoration: underline;
+		text-decoration-color: var(--neutral-100);
+		text-underline-offset: 0.25em;
+		transition: color 0.3s var(--ease-control);
+	}
+
+	.site-footer a:hover {
+		color: var(--brand);
+		text-decoration-color: var(--brand-200);
 	}
 
 	/* The Opening: copy left, the person right on a colour field. The band is pulled

@@ -327,12 +327,9 @@ export const portfolio = {
 		],
 	},
 	contact: {
-		intro: {
-			marker: "07 / Contact",
-			title: "Let's work together",
-			description:
-				"Whether it's a role, a project, or a question about something I've built, I'd like to hear about it.",
-		},
+		// The page's closing statement at Display size: the lead in Quiet Slate,
+		// then the email itself in Ink.
+		lead: "Let's talk.",
 		email: {
 			address: "apply.bhavya.kandhari@gmail.com",
 			send: "Send email",
@@ -342,19 +339,12 @@ export const portfolio = {
 				failed: "Couldn't copy automatically. Select the address to copy it.",
 			},
 		},
+		// Quiet text links under the actions; each opens in a new tab, as the
+		// Header's Resume does.
 		links: [
-			{
-				label: "LinkedIn",
-				href: "https://linkedin.com/in/kandharibhavya",
-				kind: "linkedin",
-			},
-			{ label: "GitHub", href: "https://github.com/bkandh30", kind: "github" },
-			{
-				label: "Resume",
-				href: "/resume.pdf",
-				download: "Bhavya-Kandhari-Resume.pdf",
-				kind: "resume",
-			},
+			{ label: "LinkedIn", href: "https://linkedin.com/in/kandharibhavya" },
+			{ label: "GitHub", href: "https://github.com/bkandh30" },
+			{ label: "Resume", href: "/resume.pdf" },
 		],
 	},
 	footer: {
@@ -362,9 +352,7 @@ export const portfolio = {
 			{ label: "TanStack Start", href: "https://tanstack.com/start" },
 			{ label: "TypeScript", href: "https://www.typescriptlang.org" },
 			{ label: "Tailwind CSS", href: "https://tailwindcss.com" },
-			{ label: "Motion", href: "https://motion.dev" },
 		],
 		owner: "Bhavya Kandhari",
-		rights: "All rights reserved.",
 	},
 } as const;
