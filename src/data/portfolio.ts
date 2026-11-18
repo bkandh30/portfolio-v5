@@ -245,61 +245,85 @@ export const portfolio = {
 		},
 	},
 	skills: {
-		intro: {
-			marker: "05 / Skills",
-			title: "How my stack fits together",
-			description:
-				"The tools I work with, arranged by where they sit in a system.",
+		// One two-tone sentence. Budget: 20 words, 3 lines.
+		statement: {
+			lead: "How my stack fits together.",
+			continuation:
+				"Each layer hands off to the next, and every tool names where I've used it.",
 		},
+		// The stack drawn as the system it is: Client, APIs, Services and Data left
+		// to right, on a Platform base. Every tool names where it was used, so each
+		// skill carries its own proof. All mappings are from the approved preview
+		// and still unconfirmed: Bhavya confirms each at the content pass (Softpoint
+		// is missing, Node.js is inferred, Python is undecided).
 		layers: [
 			{
 				name: "Client",
 				role: "Interfaces people use",
 				tools: [
-					"React",
-					"TypeScript",
-					"Angular",
-					"Next.js",
-					"TanStack Start",
-					"Tailwind CSS",
+					{ name: "React", evidence: "Liberty Mutual, Scouttrace, EchoForge" },
+					{
+						name: "TypeScript",
+						evidence: "Liberty Mutual, Scouttrace, EchoForge",
+					},
+					{ name: "Angular", evidence: "EY GDS" },
+					{ name: "Next.js", evidence: "EchoForge" },
+					{ name: "TanStack Start", evidence: "Scouttrace, this site" },
+					{ name: "Tailwind CSS", evidence: "Scouttrace, this site" },
 				],
 			},
 			{
-				name: "API",
+				name: "APIs",
 				role: "Contracts between systems",
-				tools: ["REST APIs", "Spring Security", "tRPC", "JWT"],
+				// JWT was listed with GoFlix as evidence, but GoFlix does not use JWT, so
+				// it is left out until there is real evidence for it.
+				tools: [
+					{ name: "REST APIs", evidence: "Liberty Mutual, EY GDS" },
+					{ name: "Spring Security", evidence: "Liberty Mutual" },
+					{ name: "tRPC", evidence: "EchoForge" },
+				],
 			},
 			{
 				name: "Services",
-				role: "Business logic and workflows",
+				role: "Where most of my production work lives",
+				// The one Night panel, larger and raised.
+				core: true,
 				tools: [
-					"Java",
-					"Spring Boot",
-					"Spring Batch",
-					"Kafka",
-					"Go",
-					"Rust",
-					"Node.js",
+					{ name: "Java", evidence: "Liberty Mutual, EY GDS" },
+					{ name: "Spring Boot", evidence: "Liberty Mutual, EY GDS" },
+					{ name: "Spring Batch", evidence: "EY GDS" },
+					{ name: "Kafka", evidence: "Liberty Mutual" },
+					{ name: "Go", evidence: "GoFlix" },
+					{ name: "Rust", evidence: "Metered Finance API" },
+					{ name: "Node.js", evidence: "Scouttrace, EchoForge" },
 				],
-				// the one layer the section leads with; its proof restates About's experience
-				focus:
-					"Where most of my production work lives: backend services for policy and claims workflows at Liberty Mutual, and batch workflows for document-heavy operations at EY GDS.",
 			},
 			{
 				name: "Data",
 				role: "Storage and access",
-				tools: ["PostgreSQL", "MySQL", "SQL", "JPA (Hibernate)", "Prisma"],
+				tools: [
+					{
+						name: "PostgreSQL",
+						evidence: "Liberty Mutual, Scouttrace, EchoForge, GoFlix",
+					},
+					{ name: "MySQL", evidence: "EY GDS" },
+					{ name: "SQL", evidence: "EY GDS" },
+					{ name: "JPA (Hibernate)", evidence: "EY GDS" },
+					{ name: "Prisma", evidence: "Scouttrace, EchoForge" },
+				],
 			},
 			{
 				name: "Platform",
-				role: "Build, ship, and run",
+				role: "Build, ship, and run everything above",
+				// The base: a full-width row under the four layers on desktop.
+				base: true,
 				tools: [
-					"AWS",
-					"Docker",
-					"Jenkins",
-					"GitHub Actions",
-					"Vercel",
-					"Cloudflare R2",
+					{ name: "AWS", evidence: "Liberty Mutual, EY GDS" },
+					{ name: "Docker", evidence: "Liberty Mutual" },
+					{ name: "Jenkins", evidence: "Liberty Mutual" },
+					{ name: "GitHub Actions", evidence: "This site" },
+					{ name: "Vercel", evidence: "Scouttrace, this site" },
+					{ name: "Cloudflare R2", evidence: "EchoForge" },
 				],
 			},
 		],
