@@ -323,6 +323,13 @@ body,
 		text-wrap: balance;
 	}
 
+	/* Every h2 is a two-tone section statement. They wrap normally rather than
+	balanced: balancing put the lead on a line of its own and split the sentence
+	in two, and made the statement narrower than its measure. */
+	h2 {
+		text-wrap: pretty;
+	}
+
 	/* Dates, counts, and tables keep their columns aligned. */
 	:where(time, data, table) {
 		font-variant-numeric: tabular-nums;
@@ -553,11 +560,8 @@ body,
 		min-width: 0;
 	}
 
-	/* Normal wrapping, as in Skills: balanced wrapping put the lead on a line
-	of its own and split the two-tone sentence in two. */
 	.career-statement {
 		max-width: 38rem;
-		text-wrap: pretty;
 	}
 
 	.career > li {
@@ -1147,11 +1151,8 @@ body,
 	/* Skills: the Stack Map, as in the approved preview. Layers are panels that
 	end at their content; dashed violet connectors join each to the next. On
 	phones they stack top to bottom with each tool and its evidence on one row. */
-	/* Normal wrapping rather than the headings' balanced wrap, so the
-	statement keeps the mock's measure instead of an extra, shorter line. */
 	.skills-statement {
 		max-width: 38rem;
-		text-wrap: pretty;
 	}
 
 	.stack-map {
