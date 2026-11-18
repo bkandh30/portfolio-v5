@@ -216,11 +216,12 @@ export const portfolio = {
 		],
 	},
 	github: {
-		intro: {
-			marker: "04 / GitHub",
-			title: "Side projects, in public",
-			description:
-				"My day-to-day engineering happens in private repositories. This is what I've built in public over the past year.",
+		// One two-tone sentence that also says what the calendar covers.
+		// Budget: 20 words, 2 lines on desktop.
+		statement: {
+			lead: "In public.",
+			continuation:
+				"My day-to-day engineering is in private repositories, so this is side projects only.",
 		},
 		username: "bkandh30",
 		profile: {

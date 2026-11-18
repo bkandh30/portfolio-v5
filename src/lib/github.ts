@@ -1,9 +1,13 @@
 import { createServerFn } from "@tanstack/react-start";
-import type {
-	Contribution,
-	ContributionLevel,
-} from "../components/ui/github-activity";
 import { portfolio } from "../data/portfolio";
+
+export type ContributionLevel = 0 | 1 | 2 | 3 | 4;
+
+export type Contribution = {
+	date: string;
+	count: number;
+	level: ContributionLevel;
+};
 
 const GITHUB_GRAPHQL = "https://api.github.com/graphql";
 const CACHE_TTL = 60 * 60 * 1000;
