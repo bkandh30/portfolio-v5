@@ -1050,24 +1050,88 @@ body,
 		transform: translate(0.125rem, -0.125rem);
 	}
 
-	.github-section {
-		background:
-			radial-gradient(
-				ellipse 42% 46% at 90% 64%,
-				rgba(214, 217, 252, 0.26),
-				transparent 74%
-			),
-			var(--page-subtle);
+	/* In Public: the second half of the night band. As in the approved preview,
+	a rule across the content and 48px either side separate it from How I
+	Build, and the calendar panel sits 24px under its statement. */
+	.github-band .rails {
+		padding-top: 0;
+	}
+
+	.github-divider {
+		margin-bottom: 3rem;
+		border-top: 1px solid var(--night-line);
+	}
+
+	.github-statement {
+		max-width: 38rem;
 	}
 
 	.github-panel {
-		width: fit-content;
-		max-width: 100%;
-		margin-inline: auto;
-		overflow: hidden;
-		border: 1px solid var(--border-subtle);
-		border-radius: 0.875rem;
-		background: var(--page);
+		margin-top: 1.5rem;
+		border: 1px solid var(--night-line);
+		border-radius: var(--radius-panel);
+		background: var(--night-panel);
+		padding: clamp(1rem, 2vw, 1.5rem);
+	}
+
+	/* The calendar: 7 rows by one column per week, columns sharing the width
+	so square cells fill the panel. Phones keep 760px and scroll, opening on
+	the newest week through the right-to-left wrapper. */
+	.calendar-scroll {
+		direction: rtl;
+		overflow-x: auto;
+		margin-top: 1rem;
+		padding-bottom: 0.25rem;
+	}
+
+	.calendar-inner {
+		direction: ltr;
+		width: 100%;
+		min-width: 47.5rem;
+	}
+
+	.calendar-months,
+	.calendar-days {
+		display: grid;
+		grid-template-columns: repeat(var(--weeks), minmax(0, 1fr));
+		gap: 3px;
+	}
+
+	.calendar-months {
+		margin-bottom: 6px;
+		color: var(--night-text-secondary);
+		font-size: var(--text-caption);
+		line-height: var(--text-caption--line-height);
+		white-space: nowrap;
+	}
+
+	.calendar-days {
+		grid-template-rows: repeat(7, auto);
+		grid-auto-flow: column;
+	}
+
+	/* Empty days a step lighter than the panel, so the grid reads; activity
+	runs Deep Violet to the palest violet, brighter meaning more. */
+	.calendar-days > span {
+		aspect-ratio: 1;
+		border-radius: 2px;
+		background: #22337a;
+	}
+
+	.calendar-days > [data-level="1"] {
+		background: var(--brand-700);
+	}
+
+	.calendar-days > [data-level="2"] {
+		background: var(--brand-600);
+	}
+
+	.calendar-days > [data-level="3"] {
+		background: var(--brand-400);
+	}
+
+	.calendar-days > [data-level="4"] {
+		background: var(--brand-100);
 	}
 
 	.github-panel-footer {
@@ -1075,64 +1139,36 @@ body,
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.5rem 1.5rem;
-		border-top: 1px solid var(--border-subtle);
-		padding: 0.75rem 1rem;
-	}
-
-	.github-panel-footer .project-link {
-		margin-inline-start: auto;
+		gap: 1rem 2rem;
+		margin-top: 1rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.12);
+		padding-top: 1rem;
 	}
 
 	.github-stats {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.75rem 2rem;
+		gap: 0.75rem 2.5rem;
 	}
 
 	.github-stats dt {
-		font-family: var(--font-mono);
-		font-size: 0.625rem;
-		line-height: 1rem;
-		font-weight: 500;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--neutral-500);
+		color: var(--night-text-secondary);
+		font-size: var(--text-small);
+		line-height: var(--text-small--line-height);
 	}
 
+	/* Values at Subtitle size in the heading face, so the numbers lead. */
 	.github-stats dd {
-		margin-top: 0.125rem;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		font-weight: 700;
-		letter-spacing: -0.02em;
+		color: var(--neutral-0);
+		font-family: var(--font-display);
+		font-size: var(--text-subtitle);
+		line-height: 1.2;
+		letter-spacing: var(--text-subtitle--letter-spacing);
 		font-variant-numeric: tabular-nums;
-		color: var(--neutral-950);
 	}
 
 	.github-fallback {
-		max-width: 34rem;
-		padding: clamp(1.5rem, 4vw, 2rem);
-		text-align: center;
-	}
-
-	.github-fallback h3 {
-		font-size: 1.125rem;
-		line-height: 1.5rem;
-		font-weight: 700;
-		letter-spacing: -0.03em;
-		color: var(--neutral-950);
-	}
-
-	.github-fallback-description {
-		margin-top: 0.5rem;
-		font-size: 0.9375rem;
-		line-height: 1.625rem;
-		color: var(--neutral-600);
-	}
-
-	.github-fallback .project-link {
-		margin-top: 0.75rem;
+		padding: 0.5rem;
 	}
 
 	.stack-layers {

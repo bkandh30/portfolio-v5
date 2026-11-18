@@ -21,8 +21,8 @@ function App() {
 			<HeroSection />
 			<WorkSection />
 			<HowSection />
-			<AboutSection />
 			<GitHubSection activity={githubActivity} />
+			<AboutSection />
 			<SkillsSection />
 			<ContactSection />
 		</main>
