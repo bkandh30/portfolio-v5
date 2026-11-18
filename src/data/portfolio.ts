@@ -25,58 +25,6 @@ export const portfolio = {
 			previously: "Previously at Liberty Mutual and EY GDS",
 		},
 	},
-	about: {
-		intro: {
-			marker: "01 / About",
-			title: "A bit about me",
-			description:
-				"How I approach engineering, and the experience that has shaped the systems I build.",
-		},
-		profile: {
-			title: "Backend engineering with a product sensibility.",
-			summary: [
-				"I'm a software engineer focused on backend services, internal platforms, and production APIs.",
-				"I also build the TypeScript and React experiences that connect people to the systems I design.",
-			],
-			metadata: [
-				{ label: "Focus", value: "Backend & platform systems" },
-				{ label: "Stack", value: "Java, Spring Boot, TypeScript, React" },
-				{ label: "Status", value: "Open to opportunities" },
-			],
-		},
-		experience: [
-			{
-				title: "Software Engineer II",
-				company: "Softpoint",
-				dates: "MAY 2026 - PRESENT",
-				meta: null,
-				highlights: [
-					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-					"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-				],
-			},
-			{
-				title: "Software Engineer",
-				company: "Liberty Mutual Insurance",
-				dates: "JAN 2025 - MAY 2026",
-				meta: "Contract",
-				highlights: [
-					"Built backend services for policy and claims workflows, with an emphasis on API design, secure data access, and production reliability.",
-					"Contributed to event-driven integrations and internal frontend workflows across core insurance systems.",
-				],
-			},
-			{
-				title: "Associate Software Engineer",
-				company: "EY GDS",
-				dates: "SEP 2020 - JUL 2023",
-				meta: "Enterprise engineering",
-				highlights: [
-					"Developed backend systems and batch-processing workflows for document-heavy business operations.",
-					"Built service integrations, operational tooling, and internal dashboards for business teams.",
-				],
-			},
-		],
-	},
 	work: {
 		// One two-tone sentence. Budget: 20 words, 3 lines.
 		statement: {
@@ -325,6 +273,56 @@ export const portfolio = {
 					{ name: "Vercel", evidence: "Scouttrace, this site" },
 					{ name: "Cloudflare R2", evidence: "EchoForge" },
 				],
+			},
+		],
+	},
+	experience: {
+		// One two-tone sentence, in a side column beside the roles.
+		// Budget: 20 words, 3 lines.
+		statement: {
+			lead: "Where I've worked.",
+			continuation: "From enterprise systems to product engineering.",
+		},
+		// Newest first; must match the Opening's note. Budget: 3 short bullets
+		// per role.
+		roles: [
+			{
+				title: "Software Engineer II",
+				company: "Softpoint",
+				dates: "May 2026 to present",
+				highlights: ["Placeholder: role details to be added."],
+			},
+			{
+				title: "Software Engineer",
+				company: "Liberty Mutual Insurance, contract",
+				dates: "Jan 2025 to May 2026",
+				highlights: [
+					"Built backend services for policy and claims workflows, with an emphasis on API design, secure data access, and production reliability.",
+					"Contributed to event-driven integrations and internal frontend workflows across core insurance systems.",
+				],
+			},
+			{
+				title: "Associate Software Engineer",
+				company: "EY GDS",
+				dates: "Sep 2020 to Jul 2023",
+				highlights: [
+					"Developed backend systems and batch-processing workflows for document-heavy business operations.",
+					"Built service integrations, operational tooling, and internal dashboards for business teams.",
+				],
+			},
+		],
+		// The quiet row that ends the section. From the legacy portfolio; exact
+		// degree wording is still to be confirmed at the content pass.
+		education: [
+			{
+				degree: "Master of Science in Computer Science",
+				school: "Arizona State University",
+				dates: "Aug 2023 to May 2025",
+			},
+			{
+				degree: "Bachelor of Technology in Computer Science",
+				school: "Amity University Noida",
+				dates: "Aug 2017 to May 2021",
 			},
 		],
 	},
