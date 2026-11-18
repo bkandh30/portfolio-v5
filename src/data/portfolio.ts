@@ -119,8 +119,7 @@ export const portfolio = {
 			},
 		},
 		// Compact rows on Pale Paper. Each diagram must match the source: the first
-		// node leads to each branch, and each branch is a chain. GoFlix is shown in
-		// How I Build (the night band), so it has no row here.
+		// node leads to each branch, and each branch is a chain.
 		supporting: [
 			{
 				name: "EchoForge",
@@ -143,6 +142,75 @@ export const portfolio = {
 						"EchoForge: typed tRPC APIs lead to Prisma and PostgreSQL for records, and to Cloudflare R2 for generated media",
 					from: "tRPC",
 					branches: [["Prisma", "PostgreSQL"], ["Cloudflare R2"]],
+				},
+			},
+		],
+	},
+	how: {
+		// One two-tone sentence. Budget: 20 words, 2 lines on desktop.
+		statement: {
+			lead: "How I build.",
+			continuation:
+				"Three habits behind everything I ship, each with the evidence beside it.",
+		},
+		// How Bhavya works, not one project: each principle sits beside one piece of
+		// real evidence. Evidence comes from jobs (described without internal
+		// detail), this site's documented process, or the future flagship; never
+		// from the tutorial-built projects. Everything below is placeholder until
+		// the content pass. Budget per principle: a short title, 2 sentences, and
+		// evidence of at most 3 rows or 5 steps.
+		principles: [
+			{
+				title: "I decide; the agent types.",
+				description:
+					"I write the spec and the checks first, then review every change an AI agent makes against them. Nothing merges that I have not measured or read.",
+				source: { name: "this site", detail: "built with Claude Code" },
+				evidence: {
+					kind: "table",
+					label: "Placeholder evidence table",
+					columns: ["Placeholder item", "Reference", "Built"],
+					rows: [
+						["Placeholder measurement", "Value", "Value"],
+						["Placeholder measurement", "Value", "Value"],
+						["Placeholder measurement", "Value", "Value"],
+					],
+				},
+			},
+			{
+				title: "I make failure visible.",
+				description:
+					"When work can fail, I give the failure a place to land and someone to tell, instead of letting it disappear in a log.",
+				source: {
+					name: "Softpoint",
+					detail: "described without internal detail",
+				},
+				evidence: {
+					kind: "flow",
+					label: "Placeholder evidence flow with five steps",
+					steps: ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"],
+					// The first steps are the path that runs; the rest are how failure
+					// is handled, drawn as dashed outlines.
+					handled: 2,
+					note: "Placeholder: a short note on where this comes from.",
+				},
+			},
+			{
+				title: "I ship the smallest useful version.",
+				description:
+					"I cut scope until the first version can ship, and write down what waits and why, so nothing is lost and nothing ships half-done.",
+				source: {
+					name: "this site",
+					detail: "cut and deferred during the redesign",
+				},
+				evidence: {
+					kind: "table",
+					label: "Placeholder evidence table",
+					columns: ["Placeholder item", "Decision", "Why"],
+					rows: [
+						["Placeholder item", "Decision", "Reason"],
+						["Placeholder item", "Decision", "Reason"],
+						["Placeholder item", "Decision", "Reason"],
+					],
 				},
 			},
 		],
