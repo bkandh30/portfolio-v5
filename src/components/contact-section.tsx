@@ -1,10 +1,35 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { portfolio } from "../data/portfolio";
 import { ActionLink, Button, ButtonLink } from "./ui/button";
 
 type CopyState = "idle" | "copied" | "failed";
 
 const COPY_RESET_DELAY = 2000;
+
+// The address with invisible break points after each dot in the name and after
+// the "@", so a narrow screen wraps it there rather than mid-word. Selecting and
+// copying the text still gives the plain address.
+function BreakableEmail({ address }: { address: string }) {
+	const [name = "", domain = ""] = address.split("@");
+	const parts = name.split(".");
+
+	return (
+		<>
+			{parts.map((part, index) => (
+				<Fragment key={part}>
+					{part}
+					{index < parts.length - 1 && (
+						<>
+							.<wbr />
+						</>
+					)}
+				</Fragment>
+			))}
+			@<wbr />
+			{domain}
+		</>
+	);
+}
 
 // The label changes for sighted users; a status message tells screen readers.
 function CopyEmailButton() {
@@ -53,7 +78,8 @@ export function ContactSection() {
 		>
 			<div className="rails">
 				<h2 id="contact-title" className="contact-statement text-display">
-					<span className="quiet">{contact.lead}</span> {contact.email.address}
+					<span className="quiet">{contact.lead}</span>{" "}
+					<BreakableEmail address={contact.email.address} />
 				</h2>
 
 				<div className="contact-actions">
