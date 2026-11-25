@@ -718,9 +718,13 @@ body,
 		line-height: var(--text-small--line-height);
 	}
 
+	/* A strip across the note, not inline code: it replaces the base code rule's
+	border and radius, which otherwise drew a rounded box inside the card. */
 	.work-note-code {
 		display: block;
+		border: 0;
 		border-top: 1px solid var(--neutral-50);
+		border-radius: 0;
 		background: var(--neutral-25);
 		padding: 0.5rem 1rem;
 		color: var(--neutral-600);
