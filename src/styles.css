@@ -335,7 +335,9 @@ body,
 		font-variant-numeric: tabular-nums;
 	}
 
-	p {
+	/* Running text avoids leaving one word alone on its last line: paragraphs,
+	list items such as Experience's bullets, and captions. */
+	:where(p, li, figcaption) {
 		text-wrap: pretty;
 	}
 
@@ -1309,8 +1311,10 @@ body,
 		background: var(--neutral-25);
 	}
 
+	/* The email wraps at the break points its markup offers (after the "@" and
+	the dots); it splits inside a word only if one part still cannot fit. */
 	.contact-statement {
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
 	}
 
 	.contact-actions {
